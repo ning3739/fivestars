@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { MaterialIcon } from '@/components/icons/MaterialIcon';
 import { FEATURES } from '@/lib/constants';
-import { FadeIn, SlideInLeft, SlideInRight, StaggerContainer, StaggerItem } from '@/components/ui/Motion';
+import { FadeIn, StaggerContainer, StaggerItem } from '@/components/ui/Motion';
 import type { Feature } from '@/types';
 
 /**
@@ -54,13 +54,14 @@ export function WhyUsSection({
         'w-full',
         'py-16 md:py-20',
         'bg-primary',
+        'overflow-hidden',
         className
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left side - Image */}
-          <SlideInLeft className="relative">
+          <FadeIn className="relative pb-0 md:pb-6">
             <div className="relative aspect-[4/3] rounded-md overflow-hidden">
               <Image
                 src="/images/residential.jpg"
@@ -70,25 +71,25 @@ export function WhyUsSection({
                 className="object-cover"
               />
             </div>
-            {/* Floating quote card */}
-            <FadeIn delay={0.4} className="absolute -bottom-6 -right-6 bg-white rounded-md shadow-xl p-6 max-w-xs hidden md:block">
+            {/* Floating quote card - desktop only */}
+            <div className="absolute -bottom-6 -right-6 bg-white rounded-md shadow-xl p-6 max-w-xs hidden md:block">
               <p className="text-text text-sm italic mb-3">
                 &ldquo;We don&apos;t just clean, we care for your home like it&apos;s our own.&rdquo;
               </p>
               <p className="text-primary font-semibold text-sm">— The FiveStars Team</p>
-            </FadeIn>
-          </SlideInLeft>
+            </div>
+          </FadeIn>
 
           {/* Right side - Content */}
-          <SlideInRight delay={0.2}>
+          <FadeIn delay={0.2}>
             <span className="text-gold text-sm font-semibold uppercase tracking-wider">THE FIVESTARS STANDARD</span>
             <h2
               data-testid="why-us-title"
               className={cn(
                 'font-heading font-bold',
-                'text-2xl sm:text-3xl lg:text-4xl',
+                'text-xl sm:text-2xl md:text-3xl',
                 'text-white',
-                'mt-2 mb-6'
+                'mt-2 mb-4 sm:mb-6'
               )}
             >
               Why Choose Us
@@ -97,8 +98,8 @@ export function WhyUsSection({
               data-testid="why-us-subtitle"
               className={cn(
                 'text-white/80',
-                'text-base sm:text-lg',
-                'mb-8'
+                'text-sm sm:text-base',
+                'mb-6 sm:mb-8'
               )}
             >
               Discover what makes FiveStarsCleaning the trusted choice for Queenstown homes and businesses
@@ -110,7 +111,7 @@ export function WhyUsSection({
               className={cn(
                 'grid',
                 'grid-cols-1 sm:grid-cols-2',
-                'gap-6'
+                'gap-4 sm:gap-6'
               )}
               data-testid="why-us-grid"
             >
@@ -120,13 +121,13 @@ export function WhyUsSection({
                 >
                   <div
                     data-testid={`feature-card-${feature.id}`}
-                    className="flex items-start gap-4"
+                    className="flex items-start gap-3 sm:gap-4"
                   >
                     {/* Icon */}
                     <div
                       data-testid={`feature-icon-${feature.id}`}
                       className={cn(
-                        'w-10 h-10',
+                        'w-9 h-9 sm:w-10 sm:h-10',
                         'rounded-md',
                         'bg-gold/20',
                         'flex items-center justify-center',
@@ -135,18 +136,18 @@ export function WhyUsSection({
                     >
                       <MaterialIcon
                         name={feature.icon}
-                        size="md"
+                        size="sm"
                         className="text-gold"
                       />
                     </div>
 
-                    <div>
+                    <div className="min-w-0">
                       {/* Title */}
                       <h3
                         data-testid={`feature-title-${feature.id}`}
                         className={cn(
                           'font-heading font-semibold',
-                          'text-base',
+                          'text-sm sm:text-base',
                           'text-white',
                           'mb-1'
                         )}
@@ -159,7 +160,7 @@ export function WhyUsSection({
                         data-testid={`feature-description-${feature.id}`}
                         className={cn(
                           'text-white/70',
-                          'text-sm',
+                          'text-xs sm:text-sm',
                           'leading-relaxed'
                         )}
                       >
@@ -170,7 +171,7 @@ export function WhyUsSection({
                 </StaggerItem>
               ))}
             </StaggerContainer>
-          </SlideInRight>
+          </FadeIn>
         </div>
       </div>
     </section>

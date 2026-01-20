@@ -12,7 +12,7 @@ import { Button } from '@/components/ui/Button';
 import { MaterialIcon } from '@/components/icons/MaterialIcon';
 import { VALUES, FEATURES } from '@/lib/constants';
 import { CONTACT_INFO } from '@/lib/constants';
-import { FadeIn, FadeInScale, SlideInLeft, SlideInRight, StaggerContainer, StaggerItem } from '@/components/ui/Motion';
+import { FadeIn, FadeInScale, StaggerContainer, StaggerItem } from '@/components/ui/Motion';
 
 function ImageWithSkeleton({ src, alt, className }: { src: string; alt: string; className?: string }) {
   const [loaded, setLoaded] = useState(false);
@@ -97,65 +97,67 @@ export default function AboutPage() {
       </section>
 
       {/* Professionals You Can Rely On Section - Single Card */}
-      <section className="py-16 md:py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Single card with image left, content right */}
           <FadeInScale>
-            <div className="rounded-md shadow-lg overflow-hidden grid grid-cols-1 lg:grid-cols-2 bg-white">
-              {/* Left - Team Image */}
-              <SlideInLeft className="relative min-h-[300px] lg:min-h-[400px]">
-                <ImageWithSkeleton
-                  src="/images/team.jpg"
-                  alt="FiveStarsCleaning professional team"
-                  className="object-cover"
-                />
-              </SlideInLeft>
+            <div className="rounded-md shadow-lg overflow-hidden bg-white">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                {/* Left - Team Image */}
+                <div className="relative min-h-[250px] sm:min-h-[300px] lg:min-h-[400px]">
+                  <ImageWithSkeleton
+                    src="/images/team.jpg"
+                    alt="FiveStarsCleaning professional team"
+                    className="object-cover"
+                  />
+                </div>
 
-              {/* Right - Content */}
-              <SlideInRight delay={0.2} className="p-8 md:p-10 flex flex-col justify-center">
-                <span className="text-gold text-sm font-semibold uppercase tracking-wider">OUR PEOPLE</span>
-                <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-text mt-2 mb-4">
-                  Professionals You Can Rely On
-                </h2>
-                <p className="text-text-secondary text-base mb-8">
-                  We believe in building a team of dedicated professionals who share our passion for 
-                  cleanliness and customer satisfaction. Every team member is carefully vetted and 
-                  trained to deliver exceptional results.
-                </p>
-                
-                {/* Features list */}
-                <div className="space-y-5">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-gold/10 rounded-md flex items-center justify-center flex-shrink-0">
-                      <MaterialIcon name="verified_user" className="text-gold" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-text mb-1">Background Verified</h4>
-                      <p className="text-text-secondary text-sm">Every team member undergoes comprehensive background checks for your peace of mind.</p>
-                    </div>
-                  </div>
+                {/* Right - Content */}
+                <div className="p-6 sm:p-8 md:p-10 flex flex-col justify-center">
+                  <span className="text-gold text-sm font-semibold uppercase tracking-wider">OUR PEOPLE</span>
+                  <h2 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold text-text mt-2 mb-4">
+                    Professionals You Can Rely On
+                  </h2>
+                  <p className="text-text-secondary text-sm sm:text-base mb-6 sm:mb-8">
+                    We believe in building a team of dedicated professionals who share our passion for 
+                    cleanliness and customer satisfaction. Every team member is carefully vetted and 
+                    trained to deliver exceptional results.
+                  </p>
                   
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-gold/10 rounded-md flex items-center justify-center flex-shrink-0">
-                      <MaterialIcon name="school" className="text-gold" />
+                  {/* Features list */}
+                  <div className="space-y-4 sm:space-y-5">
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gold/10 rounded-md flex items-center justify-center flex-shrink-0">
+                        <MaterialIcon name="verified_user" className="text-gold" size="sm" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-text text-sm sm:text-base mb-1">Background Verified</h4>
+                        <p className="text-text-secondary text-xs sm:text-sm">Every team member undergoes comprehensive background checks for your peace of mind.</p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="font-semibold text-text mb-1">Extensively Trained</h4>
-                      <p className="text-text-secondary text-sm">Rigorous training programs ensure consistent, high-quality results every time.</p>
+                    
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gold/10 rounded-md flex items-center justify-center flex-shrink-0">
+                        <MaterialIcon name="school" className="text-gold" size="sm" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-text text-sm sm:text-base mb-1">Extensively Trained</h4>
+                        <p className="text-text-secondary text-xs sm:text-sm">Rigorous training programs ensure consistent, high-quality results every time.</p>
+                      </div>
                     </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-gold/10 rounded-md flex items-center justify-center flex-shrink-0">
-                      <MaterialIcon name="shield" className="text-gold" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-text mb-1">Fully Insured</h4>
-                      <p className="text-text-secondary text-sm">Complete insurance coverage protects you and your property at all times.</p>
+                    
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gold/10 rounded-md flex items-center justify-center flex-shrink-0">
+                        <MaterialIcon name="shield" className="text-gold" size="sm" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-text text-sm sm:text-base mb-1">Fully Insured</h4>
+                        <p className="text-text-secondary text-xs sm:text-sm">Complete insurance coverage protects you and your property at all times.</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </SlideInRight>
+              </div>
             </div>
           </FadeInScale>
         </div>
