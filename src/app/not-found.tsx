@@ -14,10 +14,10 @@ export default function NotFound() {
           It might have been moved or doesn&apos;t exist.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button variant="primary" href="/">
+          <Button variant="primary" size="md" href="/">
             Back to Home
           </Button>
-          <Button variant="outline" href="/contact">
+          <Button variant="outline" size="md" href="/contact">
             Contact Us
           </Button>
         </div>
