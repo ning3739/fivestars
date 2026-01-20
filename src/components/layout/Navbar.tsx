@@ -98,7 +98,7 @@ export function Navbar({ className }: NavbarProps) {
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-18">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link
             href="/"
@@ -119,20 +119,20 @@ export function Navbar({ className }: NavbarProps) {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-2">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'px-4 py-2 text-sm transition-all duration-200 rounded-lg',
+                  'px-4 py-2 text-base transition-all duration-200 rounded-lg',
                   isTransparent
                     ? isCurrentPage(link.href)
                       ? 'text-white bg-white/15 font-bold'
-                      : 'text-white/80 hover:text-white hover:bg-white/10 font-medium'
+                      : 'text-white/90 hover:text-white hover:bg-white/10 font-medium'
                     : isCurrentPage(link.href)
                       ? 'text-primary bg-primary/10 font-bold'
-                      : 'text-text-secondary hover:text-primary hover:bg-gray-50 font-medium'
+                      : 'text-text hover:text-primary hover:bg-gray-50 font-medium'
                 )}
               >
                 {link.label}
@@ -144,10 +144,10 @@ export function Navbar({ className }: NavbarProps) {
           <div className="hidden md:block">
             <Button
               variant="primary"
-              size="sm"
+              size="md"
               href="/contact"
               className={cn(
-                "min-w-[120px]",
+                "min-w-[130px]",
                 isTransparent && "bg-gold text-primary hover:bg-gold-400"
               )}
             >
@@ -162,12 +162,13 @@ export function Navbar({ className }: NavbarProps) {
             className={cn(
               'md:hidden',
               'inline-flex items-center justify-center',
-              'w-10 h-10 p-2',
-              'rounded-lg transition-colors duration-200',
+              'w-11 h-11 p-2',
+              'rounded-xl transition-all duration-200',
               'focus:outline-none focus:ring-2 focus:ring-offset-2',
+              'active:scale-95',
               isTransparent
                 ? 'text-white hover:bg-white/10 focus:ring-white'
-                : 'text-primary hover:bg-gray-100 focus:ring-primary'
+                : 'text-primary hover:bg-primary/5 focus:ring-primary'
             )}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
@@ -175,51 +176,51 @@ export function Navbar({ className }: NavbarProps) {
           >
             <MaterialIcon
               name={isMobileMenuOpen ? 'close' : 'menu'}
-              size="md"
+              size="lg"
             />
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Panel */}
+      {/* Mobile Menu Panel - Simple Dropdown */}
       <div
         id="mobile-menu"
         className={cn(
           'md:hidden',
           'absolute top-full left-0 right-0',
-          'bg-white border-t border-gray-100',
-          'shadow-lg',
-          'transition-all duration-300 ease-in-out',
-          'overflow-hidden',
+          'bg-white shadow-lg',
+          'transition-all duration-200',
           isMobileMenuOpen
-            ? 'max-h-screen opacity-100 visible'
-            : 'max-h-0 opacity-0 invisible'
+            ? 'opacity-100 visible'
+            : 'opacity-0 invisible pointer-events-none'
         )}
       >
-        <div className="px-4 py-3 space-y-1">
+        <div className="px-4 py-4">
+          {/* Navigation Links */}
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={closeMobileMenu}
               className={cn(
-                'block px-4 py-3 rounded-lg',
-                'font-medium transition-colors duration-200',
+                'block px-4 py-3 rounded-lg text-base',
+                'transition-colors',
                 isCurrentPage(link.href)
-                  ? 'text-primary bg-primary/5'
-                  : 'text-text-secondary hover:text-primary hover:bg-gray-50'
+                  ? 'text-primary font-semibold bg-primary/5'
+                  : 'text-text hover:bg-gray-50'
               )}
             >
               {link.label}
             </Link>
           ))}
 
-          {/* Mobile CTA Button */}
-          <div className="pt-3 pb-1">
+          {/* CTA Button */}
+          <div className="mt-4 px-4">
             <Button
               variant="primary"
               size="md"
               href="/contact"
+              onClick={closeMobileMenu}
               className="w-full"
             >
               Get a Quote
@@ -228,12 +229,11 @@ export function Navbar({ className }: NavbarProps) {
         </div>
       </div>
 
-      {/* Mobile Menu Backdrop */}
+      {/* Backdrop */}
       {isMobileMenuOpen && (
         <div
-          className="md:hidden fixed inset-0 top-16 bg-black/20 z-[-1]"
+          className="md:hidden fixed inset-0 top-16 bg-black/20 -z-10"
           onClick={closeMobileMenu}
-          aria-hidden="true"
         />
       )}
     </nav>

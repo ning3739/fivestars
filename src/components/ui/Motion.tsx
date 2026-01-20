@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'motion/react';
-import { ReactNode } from 'react';
+import { motion, useInView } from 'motion/react';
+import { ReactNode, useRef } from 'react';
 
 interface FadeInProps {
   children: ReactNode;
@@ -18,11 +18,14 @@ interface StaggerProps {
 
 // 淡入上移动画
 export function FadeIn({ children, delay = 0, duration = 0.5, className }: FadeInProps) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  
   return (
     <motion.div
+      ref={ref}
       initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration, delay, ease: 'easeOut' }}
       className={className}
     >
@@ -33,11 +36,14 @@ export function FadeIn({ children, delay = 0, duration = 0.5, className }: FadeI
 
 // 淡入缩放动画
 export function FadeInScale({ children, delay = 0, duration = 0.5, className }: FadeInProps) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  
   return (
     <motion.div
+      ref={ref}
       initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true, margin: '-50px' }}
+      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
       transition={{ duration, delay, ease: 'easeOut' }}
       className={className}
     >
@@ -48,11 +54,14 @@ export function FadeInScale({ children, delay = 0, duration = 0.5, className }: 
 
 // 从左侧滑入
 export function SlideInLeft({ children, delay = 0, duration = 0.5, className }: FadeInProps) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  
   return (
     <motion.div
+      ref={ref}
       initial={{ opacity: 0, x: -30 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
+      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
       transition={{ duration, delay, ease: 'easeOut' }}
       className={className}
     >
@@ -63,11 +72,14 @@ export function SlideInLeft({ children, delay = 0, duration = 0.5, className }: 
 
 // 从右侧滑入
 export function SlideInRight({ children, delay = 0, duration = 0.5, className }: FadeInProps) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  
   return (
     <motion.div
+      ref={ref}
       initial={{ opacity: 0, x: 30 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
+      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
       transition={{ duration, delay, ease: 'easeOut' }}
       className={className}
     >
@@ -78,11 +90,14 @@ export function SlideInRight({ children, delay = 0, duration = 0.5, className }:
 
 // 交错动画容器
 export function StaggerContainer({ children, className, staggerDelay = 0.1 }: StaggerProps) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  
   return (
     <motion.div
+      ref={ref}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-50px' }}
+      animate={isInView ? 'visible' : 'hidden'}
       variants={{
         hidden: {},
         visible: {

@@ -1,26 +1,14 @@
+'use client';
+
 /**
  * Contact Page - Matching Figma Design
  */
 
-import type { Metadata } from 'next';
 import { Hero } from '@/components/sections/Hero';
 import { ContactForm } from '@/components/sections/ContactForm';
 import { MaterialIcon } from '@/components/icons/MaterialIcon';
 import { CONTACT_INFO } from '@/lib/constants';
-
-export const metadata: Metadata = {
-  title: 'Contact Us',
-  description: 'Contact FiveStars Cleaning for a free quote. Phone: +64 22 503 0102, Email: info@fivestarscleaning.co.nz. Serving Queenstown Central, Frankton, Arrowtown & Kelvin Heights.',
-  keywords: ['contact FiveStars', 'cleaning quote Queenstown', 'book cleaning service', 'Queenstown cleaners contact'],
-  openGraph: {
-    title: 'Contact FiveStars Cleaning | Get a Free Quote',
-    description: 'Contact us for a free cleaning quote. Serving the Greater Queenstown Region.',
-    url: 'https://fivestars.co.nz/contact',
-  },
-  alternates: {
-    canonical: 'https://fivestars.co.nz/contact',
-  },
-};
+import { FadeIn, SlideInLeft, SlideInRight, FadeInScale } from '@/components/ui/Motion';
 
 /**
  * Service areas covered by FiveStarsCleaning
@@ -43,7 +31,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Left - Contact Information */}
-            <div>
+            <SlideInLeft>
               <span className="inline-block bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
                 GET IN TOUCH
               </span>
@@ -104,17 +92,17 @@ export default function ContactPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </SlideInLeft>
 
             {/* Right - Contact Form */}
-            <div>
+            <SlideInRight delay={0.2}>
               <div className="border-2 border-dashed border-gray-200 rounded-xl p-6 sm:p-8">
                 <h3 className="font-heading text-xl sm:text-2xl font-bold text-text mb-6">
                   Get a Free Quote
                 </h3>
                 <ContactForm />
               </div>
-            </div>
+            </SlideInRight>
           </div>
         </div>
       </section>
@@ -122,51 +110,50 @@ export default function ContactPage() {
       {/* Service Area Section */}
       <section className="py-16 md:py-20 bg-background-secondary" data-testid="service-areas-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Service Area Card with Map Background */}
-          <div className="relative rounded-2xl overflow-hidden">
-            {/* Map Background */}
-            <div 
-              className="absolute inset-0 bg-cover bg-center"
-              style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1920&q=80')`,
-              }}
-            />
-            <div className="absolute inset-0 bg-primary/80" />
-            
-            {/* Content */}
-            <div className="relative z-10 py-12 px-6 sm:px-12 text-center">
-              {/* Icon */}
-              <div className="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-6">
-                <MaterialIcon name="location_on" size="lg" className="text-primary" />
+          {/* Card Container */}
+          <FadeInScale>
+            <div className="rounded-2xl shadow-lg overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+              {/* Left - Service Area Info */}
+              <div className="bg-primary p-8 md:p-10 text-white flex flex-col justify-center">
+                <span className="inline-block bg-gold/20 text-gold text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4 w-fit">
+                  OUR COVERAGE
+                </span>
+                <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white mb-4">
+                  Service Area
+                </h2>
+                <p className="text-white/80 text-base mb-6">
+                  We proudly serve the entire <span className="text-gold font-semibold">Greater Queenstown Region</span>. 
+                  Our team covers all major suburbs and surrounding areas.
+                </p>
+                
+                {/* Area Tags */}
+                <div className="flex flex-wrap gap-2" data-testid="service-areas-list">
+                  {SERVICE_AREAS.map((area) => (
+                    <span
+                      key={area}
+                      className="bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm px-3 py-1.5 rounded-full"
+                    >
+                      {area}
+                    </span>
+                  ))}
+                </div>
               </div>
-              
-              <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white mb-4">
-                Service Area
-              </h2>
-              <p className="text-white/80 text-base max-w-lg mx-auto mb-8">
-                We proudly serve the entire <span className="text-gold font-semibold">Greater Queenstown Region</span>. 
-                Our team covers all major suburbs and surrounding areas.
-              </p>
-              
-              {/* Area Tags */}
-              <div className="flex flex-wrap justify-center gap-3 mb-8" data-testid="service-areas-list">
-                {SERVICE_AREAS.map((area) => (
-                  <span
-                    key={area}
-                    className="bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm px-4 py-2 rounded-full"
-                  >
-                    {area}
-                  </span>
-                ))}
-              </div>
-              
-              {/* Active Status */}
-              <div className="flex items-center justify-center gap-2 text-gold text-sm">
-                <span className="w-2 h-2 bg-gold rounded-full animate-pulse" />
-                <span>Active in your area now</span>
+
+              {/* Right - Embedded Map */}
+              <div className="h-[350px] lg:h-auto lg:min-h-[400px]">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89664.29584164498!2d168.5891!3d-45.0312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa9d51df1d7a8de5f%3A0x500ef868479a600!2sQueenstown%2C%20New%20Zealand!5e0!3m2!1sen!2snz!4v1700000000000!5m2!1sen!2snz"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="FiveStars Cleaning Service Area - Queenstown, New Zealand"
+                />
               </div>
             </div>
-          </div>
+          </FadeInScale>
         </div>
       </section>
     </main>

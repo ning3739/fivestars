@@ -5,11 +5,13 @@
  */
 
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Hero } from '@/components/sections/Hero';
 import { Button } from '@/components/ui/Button';
 import { MaterialIcon } from '@/components/icons/MaterialIcon';
 import { SERVICES } from '@/lib/constants';
 import { filterServices, type ServiceFilterType } from '@/lib/utils';
+import { FadeIn, FadeInScale } from '@/components/ui/Motion';
 
 // Note: Metadata must be in a separate file for client components
 // See src/app/services/metadata.ts
@@ -37,7 +39,7 @@ export default function ServicesPage() {
       <section className="py-16 md:py-20 bg-white" data-testid="services-filter-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Filter Tabs */}
-          <div className="flex justify-center mb-12">
+          <FadeIn className="flex justify-center mb-12">
             <div className="inline-flex bg-gray-100 rounded-full p-1">
               {[
                 { value: 'all', label: 'All Services' },
@@ -57,54 +59,86 @@ export default function ServicesPage() {
                 </button>
               ))}
             </div>
-          </div>
+          </FadeIn>
 
           {/* Services Grid - Top Row (3 cards) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6" data-testid="services-grid">
-            {topServices.map((service) => (
-              <ServiceCard key={service.id} service={service} />
-            ))}
+            <AnimatePresence mode="popLayout">
+              {topServices.map((service, index) => (
+                <motion.div
+                  key={service.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                  layout
+                >
+                  <ServiceCard service={service} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
 
           {/* Services Grid - Bottom Row (2 cards centered) */}
           {bottomServices.length > 0 && (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto lg:max-w-[66%]">
-              {bottomServices.map((service) => (
-                <ServiceCard key={service.id} service={service} />
-              ))}
+              <AnimatePresence mode="popLayout">
+                {bottomServices.map((service, index) => (
+                  <motion.div
+                    key={service.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    layout
+                  >
+                    <ServiceCard service={service} />
+                  </motion.div>
+                ))}
+              </AnimatePresence>
             </div>
           )}
 
           {/* Empty state */}
-          {filteredServices.length === 0 && (
-            <div className="text-center py-12" data-testid="no-services-message">
-              <p className="text-text-secondary text-lg">No services found for this category.</p>
-            </div>
-          )}
+          <AnimatePresence>
+            {filteredServices.length === 0 && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="text-center py-12"
+                data-testid="no-services-message"
+              >
+                <p className="text-text-secondary text-lg">No services found for this category.</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-16 md:py-20 bg-background-secondary" data-testid="services-cta-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-primary rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white mb-2">
-                Ready for a spotless space?
-              </h2>
-              <p className="text-white/80 text-base">
-                Get a custom quote in minutes. No credit card required.
-              </p>
+          <FadeInScale>
+            <div className="bg-primary rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6">
+              <div>
+                <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white mb-2">
+                  Ready for a spotless space?
+                </h2>
+                <p className="text-white/80 text-base">
+                  Get a custom quote in minutes. No credit card required.
+                </p>
+              </div>
+              <Button
+                variant="secondary"
+                size="lg"
+                href="/contact"
+                className="whitespace-nowrap"
+              >
+                Get Your Free Quote
+              </Button>
             </div>
-            <Button
-              variant="secondary"
-              size="lg"
-              href="/contact"
-              className="whitespace-nowrap"
-            >
-              Get Your Free Quote
-            </Button>
-          </div>
+          </FadeInScale>
         </div>
       </section>
     </main>
