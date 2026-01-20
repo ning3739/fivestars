@@ -77,14 +77,14 @@ export function Testimonials({
       data-testid="testimonials-section"
       className={cn(
         'w-full',
-        'py-12 sm:py-16 lg:py-20',
+        'py-16 md:py-20',
         'bg-white',
         className
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <FadeIn className="text-center mb-10 sm:mb-12 lg:mb-16">
+        <FadeIn className="text-center mb-12">
           <h2
             data-testid="testimonials-title"
             className={cn(
@@ -101,7 +101,8 @@ export function Testimonials({
             className={cn(
               'text-text-secondary',
               'text-base sm:text-lg',
-              'max-w-2xl mx-auto'
+              'max-w-2xl mx-auto',
+              'leading-relaxed'
             )}
           >
             Don&apos;t just take our word for it - hear from our satisfied customers

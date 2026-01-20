@@ -52,7 +52,7 @@ export function WhyUsSection({
       data-testid="why-us-section"
       className={cn(
         'w-full',
-        'py-12 sm:py-16 lg:py-20',
+        'py-16 md:py-20',
         'bg-primary',
         className
       )}
@@ -61,7 +61,7 @@ export function WhyUsSection({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Image */}
           <SlideInLeft className="relative">
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+            <div className="relative aspect-[4/3] rounded-md overflow-hidden">
               <Image
                 src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80"
                 alt="Professional cleaning team"
@@ -70,7 +70,7 @@ export function WhyUsSection({
               />
             </div>
             {/* Floating quote card */}
-            <FadeIn delay={0.4} className="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-xl p-6 max-w-xs hidden md:block">
+            <FadeIn delay={0.4} className="absolute -bottom-6 -right-6 bg-white rounded-md shadow-xl p-6 max-w-xs hidden md:block">
               <p className="text-text text-sm italic mb-3">
                 &ldquo;We don&apos;t just clean, we care for your home like it&apos;s our own.&rdquo;
               </p>
@@ -126,7 +126,7 @@ export function WhyUsSection({
                       data-testid={`feature-icon-${feature.id}`}
                       className={cn(
                         'w-10 h-10',
-                        'rounded-lg',
+                        'rounded-md',
                         'bg-gold/20',
                         'flex items-center justify-center',
                         'flex-shrink-0'

@@ -1,8 +1,9 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import { NAV_LINKS, CONTACT_INFO, SOCIAL_LINKS, COMPANY_INFO } from '@/lib/constants';
+import { CONTACT_INFO, SOCIAL_LINKS, COMPANY_INFO, SERVICES } from '@/lib/constants';
 import { MaterialIcon } from '@/components/icons/MaterialIcon';
 
 export interface FooterProps {
@@ -11,94 +12,159 @@ export interface FooterProps {
 
 export function Footer({ className }: FooterProps) {
   const currentYear = new Date().getFullYear();
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 400);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
-    <footer className={cn('bg-[#0f2744] text-white', className)}>
+    <footer className={cn('bg-primary text-white relative', className)}>
+      {/* Back to Top Button */}
+      <button
+        onClick={scrollToTop}
+        className={cn(
+          'absolute -top-5 left-1/2 -translate-x-1/2',
+          'w-10 h-10 bg-gold rounded-full',
+          'flex items-center justify-center',
+          'shadow-lg shadow-gold/30',
+          'transition-all duration-300',
+          'hover:bg-gold-400 hover:scale-110',
+          'focus:outline-none',
+          showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+        )}
+        aria-label="Back to top"
+      >
+        <MaterialIcon name="keyboard_arrow_up" className="text-primary" />
+      </button>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Content */}
-        <div className="py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {/* Logo & Description */}
-          <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-2 font-heading font-bold text-lg text-white mb-3">
-              <span className="text-gold">★</span>
-              FiveStars
-            </Link>
-            <p className="text-white/60 text-sm leading-relaxed">
-              Professional cleaning services for Queenstown homes and businesses.
-            </p>
-          </div>
+        <div className="py-12 lg:py-16">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
+            {/* Logo & Description - Takes more space */}
+            <div className="md:col-span-4">
+              <Link href="/" className="inline-flex items-center gap-2 mb-4">
+                <span className="text-2xl text-gold">★</span>
+                <span className="font-heading font-bold text-lg text-white">FiveStars</span>
+              </Link>
+              <p className="text-white/70 text-sm leading-relaxed mb-6">
+                Queenstown&apos;s premier cleaning service. Quality you can trust, results you can see.
+              </p>
+              {/* Social Icons */}
+              <div className="flex items-center gap-3">
+                {SOCIAL_LINKS.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center text-white/70 hover:bg-gold hover:text-primary transition-all duration-300"
+                    aria-label={social.name}
+                  >
+                    <SocialIcon name={social.icon} />
+                  </a>
+                ))}
+              </div>
+            </div>
 
-          {/* Services */}
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-4">Services</h4>
-            <ul className="space-y-2.5">
-              <li><Link href="/services" className="text-white/60 text-sm hover:text-gold transition-colors">Residential</Link></li>
-              <li><Link href="/services" className="text-white/60 text-sm hover:text-gold transition-colors">Commercial</Link></li>
-              <li><Link href="/services" className="text-white/60 text-sm hover:text-gold transition-colors">Deep Cleaning</Link></li>
-              <li><Link href="/services" className="text-white/60 text-sm hover:text-gold transition-colors">Move In/Out</Link></li>
-            </ul>
-          </div>
+            {/* Services */}
+            <div className="md:col-span-3">
+              <h4 className="text-white font-semibold text-sm mb-4">Services</h4>
+              <ul className="space-y-2.5">
+                {SERVICES.slice(0, 4).map((service) => (
+                  <li key={service.id}>
+                    <Link 
+                      href={`/services/${service.id}`} 
+                      className="text-white/70 text-sm hover:text-gold transition-colors inline-flex items-center gap-2 group"
+                    >
+                      <span className="w-1 h-1 bg-gold/50 rounded-full group-hover:bg-gold transition-colors" />
+                      {service.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Company */}
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-4">Company</h4>
-            <ul className="space-y-2.5">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-white/60 text-sm hover:text-gold transition-colors">
-                    {link.label}
+            {/* Quick Links */}
+            <div className="md:col-span-2">
+              <h4 className="text-white font-semibold text-sm mb-4">Company</h4>
+              <ul className="space-y-2.5">
+                <li>
+                  <Link href="/" className="text-white/70 text-sm hover:text-gold transition-colors inline-flex items-center gap-2 group">
+                    <span className="w-1 h-1 bg-gold/50 rounded-full group-hover:bg-gold transition-colors" />
+                    Home
                   </Link>
                 </li>
-              ))}
-            </ul>
-          </div>
+                <li>
+                  <Link href="/about" className="text-white/70 text-sm hover:text-gold transition-colors inline-flex items-center gap-2 group">
+                    <span className="w-1 h-1 bg-gold/50 rounded-full group-hover:bg-gold transition-colors" />
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="text-white/70 text-sm hover:text-gold transition-colors inline-flex items-center gap-2 group">
+                    <span className="w-1 h-1 bg-gold/50 rounded-full group-hover:bg-gold transition-colors" />
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-          {/* Contact */}
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-4">Contact</h4>
-            <ul className="space-y-2.5">
-              <li>
-                <a href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`} className="text-white/60 text-sm hover:text-gold transition-colors">
-                  {CONTACT_INFO.phone}
-                </a>
-              </li>
-              <li>
-                <a href={`mailto:${CONTACT_INFO.email}`} className="text-white/60 text-sm hover:text-gold transition-colors">
-                  {CONTACT_INFO.email}
-                </a>
-              </li>
-              <li className="text-white/60 text-sm">Queenstown, NZ</li>
-            </ul>
+            {/* Contact Info */}
+            <div className="md:col-span-3">
+              <h4 className="text-white font-semibold text-sm mb-4">Get in Touch</h4>
+              <ul className="space-y-3">
+                <li>
+                  <a 
+                    href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`} 
+                    className="flex items-center gap-3 text-white/70 text-sm hover:text-gold transition-colors group"
+                  >
+                    <span className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-gold/20 transition-colors">
+                      <MaterialIcon name="phone" size="sm" className="text-gold" />
+                    </span>
+                    {CONTACT_INFO.phone}
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href={`mailto:${CONTACT_INFO.email}`} 
+                    className="flex items-center gap-3 text-white/70 text-sm hover:text-gold transition-colors group"
+                  >
+                    <span className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-gold/20 transition-colors">
+                      <MaterialIcon name="email" size="sm" className="text-gold" />
+                    </span>
+                    {CONTACT_INFO.email}
+                  </a>
+                </li>
+                <li className="flex items-center gap-3 text-white/70 text-sm">
+                  <span className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
+                    <MaterialIcon name="location_on" size="sm" className="text-gold" />
+                  </span>
+                  Queenstown, NZ
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="py-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
-            <p className="text-white/50 text-xs">
-              © {currentYear} {COMPANY_INFO.name}. All rights reserved.
-            </p>
-            <span className="hidden sm:inline text-white/30">|</span>
-            <div className="flex items-center gap-4 text-white/50 text-xs">
-              <Link href="/contact" className="hover:text-gold transition-colors">Privacy Policy</Link>
-              <Link href="/contact" className="hover:text-gold transition-colors">Terms of Service</Link>
-            </div>
-          </div>
-          
-          {/* Social Icons */}
-          <div className="flex items-center gap-4">
-            {SOCIAL_LINKS.map((social) => (
-              <a
-                key={social.name}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/50 hover:text-gold transition-colors"
-                aria-label={social.name}
-              >
-                <SocialIcon name={social.icon} />
-              </a>
-            ))}
+        <div className="py-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-white/50 text-xs">
+            © {currentYear} {COMPANY_INFO.name}. All rights reserved.
+          </p>
+          <div className="flex items-center gap-4 text-white/50 text-xs">
+            <Link href="/contact" className="hover:text-gold transition-colors">Privacy Policy</Link>
+            <span className="text-white/30">•</span>
+            <Link href="/contact" className="hover:text-gold transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
@@ -107,7 +173,7 @@ export function Footer({ className }: FooterProps) {
 }
 
 function SocialIcon({ name }: { name: string }) {
-  const iconClass = "w-5 h-5";
+  const iconClass = "w-4 h-4";
   switch (name) {
     case 'facebook':
       return (

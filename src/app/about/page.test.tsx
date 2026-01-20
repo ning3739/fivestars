@@ -43,14 +43,9 @@ describe('About Page', () => {
       expect(screen.getByText('Proudly NZ Owned & Operated')).toBeInTheDocument();
     });
 
-    it('renders company founding year', () => {
-      render(<AboutPage />);
-      expect(screen.getByText(/Founded in 2015/)).toBeInTheDocument();
-    });
-
     it('renders company background story', () => {
       render(<AboutPage />);
-      expect(screen.getByText(/FiveStarsCleaning began with a simple mission/)).toBeInTheDocument();
+      expect(screen.getByText(/FiveStars Cleaning was founded with a clear mission/)).toBeInTheDocument();
     });
   });
 
@@ -100,12 +95,12 @@ describe('About Page', () => {
   describe('CTA Section', () => {
     it('renders the CTA title', () => {
       render(<AboutPage />);
-      expect(screen.getByText('Let us take care of the cleaning for you')).toBeInTheDocument();
+      expect(screen.getByText('Ready for a spotless space?')).toBeInTheDocument();
     });
 
     it('renders the CTA description', () => {
       render(<AboutPage />);
-      expect(screen.getByText(/happy Queenstown residents/)).toBeInTheDocument();
+      expect(screen.getByText(/Join Queenstown locals who trust FiveStars/)).toBeInTheDocument();
     });
 
     it('renders the primary CTA button', () => {

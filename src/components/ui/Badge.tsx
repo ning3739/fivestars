@@ -20,22 +20,6 @@ export interface BadgeProps {
  * Badge Component
  * 
  * A trust badge component used to display key selling points and guarantees.
- * Commonly used in Hero sections to highlight company credentials.
- * 
- * Features:
- * - Icon and label display
- * - Two variants: default (white/transparent) and gold
- * - Consistent styling with design system
- * 
- * @example
- * // Default variant
- * <Badge icon="verified_user" label="Fully Insured" />
- * 
- * @example
- * // Gold variant
- * <Badge icon="star" label="Premium Service" variant="gold" />
- * 
- * @validates Requirements 2.1 - THE Hero_Section SHALL 显示三个信任徽章(Fully Insured, 100% Satisfaction, Eco-Friendly)
  */
 export function Badge({
   icon,
@@ -47,21 +31,27 @@ export function Badge({
       className={cn(
         // Base styles
         'inline-flex items-center gap-2',
-        'px-4 py-2',
+        'px-4 py-2.5',
         'rounded-full',
         'text-sm font-medium',
+        'backdrop-blur-sm',
+        'transition-all duration-300',
+        'hover:scale-105',
         // Variant styles
         variant === 'default' && [
-          'bg-white/90',
+          'bg-white/95',
           'text-primary',
+          'shadow-sm',
+          'border border-white/20',
         ],
         variant === 'gold' && [
           'bg-gold',
           'text-primary',
+          'shadow-sm shadow-gold/30',
         ],
       )}
     >
-      <MaterialIcon name={icon} size="sm" />
+      <MaterialIcon name={icon} size="sm" className={variant === 'default' ? 'text-gold' : ''} />
       <span>{label}</span>
     </div>
   );

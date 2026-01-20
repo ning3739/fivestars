@@ -304,11 +304,11 @@ describe('ContactForm', () => {
       expect(form).toHaveClass('custom-class');
     });
 
-    it('applies rounded-lg to input fields', () => {
+    it('applies rounded to input fields', () => {
       render(<ContactForm />);
 
       const nameInput = screen.getByLabelText(/Full Name/i);
-      expect(nameInput).toHaveClass('rounded-lg');
+      expect(nameInput).toHaveClass('rounded');
     });
 
     it('applies full width to submit button', () => {

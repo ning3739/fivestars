@@ -64,7 +64,7 @@ export function Stats({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           {/* Left side - Team Image */}
-          <div className="relative rounded-2xl overflow-hidden shadow-lg min-h-[350px] lg:min-h-[400px]">
+          <div className="relative rounded-md overflow-hidden shadow-lg min-h-[350px] lg:min-h-[400px]">
             <Image
               src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80"
               alt="FiveStarsCleaning professional team"
@@ -74,7 +74,7 @@ export function Stats({
           </div>
 
           {/* Right side - Content Card */}
-          <div className="bg-white rounded-2xl p-8 md:p-10 shadow-lg flex flex-col justify-center">
+          <div className="bg-white rounded-md p-8 md:p-10 shadow-lg flex flex-col justify-center">
             <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-text mb-4">
               More Than Just a Cleaning Service
             </h2>

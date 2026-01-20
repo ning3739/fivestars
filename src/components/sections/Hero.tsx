@@ -121,8 +121,6 @@ export function Hero({
       className={cn(
         'relative w-full overflow-hidden',
         // Height based on variant
-        // Home: full screen with negative margin to go behind navbar
-        // Page: fixed height without negative margin
         isHome 
           ? 'min-h-[90vh] lg:min-h-screen -mt-16 md:-mt-20' 
           : 'min-h-[280px] md:min-h-[320px] flex items-center',

@@ -138,7 +138,7 @@ export function ContactForm({ className }: ContactFormProps) {
       <div
         data-testid="contact-form-success"
         className={cn(
-          'bg-green-50 border border-green-200 rounded-xl p-8 text-center',
+          'bg-green-50 border border-green-200 rounded-md p-8 text-center',
           className
         )}
       >
@@ -157,7 +157,7 @@ export function ContactForm({ className }: ContactFormProps) {
           type="button"
           onClick={() => setIsSubmitted(false)}
           data-testid="contact-form-reset-button"
-          className="inline-flex items-center justify-center gap-2 font-medium rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 bg-primary text-white hover:bg-primary-600 active:bg-primary-700 px-6 py-3 text-base min-h-11 min-w-11"
+          className="inline-flex items-center justify-center gap-2 font-medium rounded transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 bg-primary text-white hover:bg-primary-600 active:bg-primary-700 px-6 py-3 text-base min-h-11 min-w-11"
         >
           Send Another Message
         </button>
@@ -192,7 +192,7 @@ export function ContactForm({ className }: ContactFormProps) {
             aria-invalid={!!errors.name}
             aria-describedby={errors.name ? 'name-error' : undefined}
             className={cn(
-              'w-full px-4 py-2.5 rounded-lg border transition-colors',
+              'w-full px-4 py-2.5 rounded border transition-colors',
               'focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent',
               'min-h-11 text-sm',
               errors.name
@@ -230,7 +230,7 @@ export function ContactForm({ className }: ContactFormProps) {
             aria-invalid={!!errors.phone}
             aria-describedby={errors.phone ? 'phone-error' : undefined}
             className={cn(
-              'w-full px-4 py-2.5 rounded-lg border transition-colors',
+              'w-full px-4 py-2.5 rounded border transition-colors',
               'focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent',
               'min-h-11 text-sm',
               errors.phone
@@ -271,7 +271,7 @@ export function ContactForm({ className }: ContactFormProps) {
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? 'email-error' : undefined}
             className={cn(
-              'w-full px-4 py-2.5 rounded-lg border transition-colors',
+              'w-full px-4 py-2.5 rounded border transition-colors',
               'focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent',
               'min-h-11 text-sm',
               errors.email
@@ -305,7 +305,7 @@ export function ContactForm({ className }: ContactFormProps) {
             value={formData.serviceType}
             onChange={handleChange}
             className={cn(
-              'w-full px-4 py-2.5 rounded-lg border transition-colors',
+              'w-full px-4 py-2.5 rounded border transition-colors',
               'focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent',
               'min-h-11 bg-white text-sm',
               'border-gray-200 hover:border-gray-300'
@@ -338,7 +338,7 @@ export function ContactForm({ className }: ContactFormProps) {
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? 'message-error' : undefined}
           className={cn(
-            'w-full px-4 py-2.5 rounded-lg border transition-colors resize-y',
+            'w-full px-4 py-2.5 rounded border transition-colors resize-y',
             'focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent',
             'text-sm',
             errors.message

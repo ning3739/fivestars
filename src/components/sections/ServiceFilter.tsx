@@ -85,7 +85,7 @@ export function ServiceFilter({
             className={cn(
               // Base styles
               'inline-flex items-center justify-center gap-2',
-              'font-medium rounded-lg',
+              'font-medium rounded',
               'px-6 py-3 text-base min-h-11 min-w-11',
               'transition-all duration-200',
               'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2',

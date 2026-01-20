@@ -4,12 +4,30 @@
  * About Page - Matching Figma Design
  */
 
+import { useState } from 'react';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 import { Hero } from '@/components/sections/Hero';
 import { Button } from '@/components/ui/Button';
 import { MaterialIcon } from '@/components/icons/MaterialIcon';
 import { VALUES, FEATURES, COMPANY_INFO } from '@/lib/constants';
 import { FadeIn, FadeInScale, SlideInLeft, SlideInRight, StaggerContainer, StaggerItem } from '@/components/ui/Motion';
+
+function ImageWithSkeleton({ src, alt, className }: { src: string; alt: string; className?: string }) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <>
+      {!loaded && <div className="absolute inset-0 bg-gray-200 animate-pulse" />}
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className={cn(className, 'transition-opacity duration-500', loaded ? 'opacity-100' : 'opacity-0')}
+        onLoad={() => setLoaded(true)}
+      />
+    </>
+  );
+}
 
 export default function AboutPage() {
   return (
@@ -19,7 +37,7 @@ export default function AboutPage() {
         variant="page"
         title="About FiveStarsCleaning"
         subtitle="WHO WE ARE"
-        description="Your trusted local cleaning experts in Queenstown. Delivering premium cleaning services for New Zealand homes and businesses since 2015."
+        description="Your trusted local cleaning experts in Queenstown. Premium cleaning services for New Zealand homes and businesses."
         backgroundImage="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
       />
 
@@ -32,14 +50,10 @@ export default function AboutPage() {
               Proudly NZ Owned & Operated
             </h2>
             <p className="text-text-secondary text-base leading-relaxed mb-4">
-              Founded in {COMPANY_INFO.foundedYear}, FiveStarsCleaning began with a simple mission: to provide Queenstown homes 
-              and businesses with cleaning services that truly make a difference. What started as a small family operation 
-              has grown into one of Queenstown&apos;s most trusted cleaning companies.
+              FiveStars Cleaning was founded with a clear mission: to bring exceptional cleaning services to Queenstown homes and businesses. We&apos;re a local team passionate about creating spotless spaces that our clients love coming home to.
             </p>
             <p className="text-text-secondary text-base leading-relaxed">
-              We believe that a clean space is more than just aesthetics—it&apos;s about creating environments where people 
-              can thrive. Our team of dedicated professionals brings passion, expertise, and attention to detail to every 
-              job, big or small. We&apos;re not just cleaners; we&apos;re partners in maintaining the spaces you love.
+              We believe a clean space is more than just aesthetics—it&apos;s about creating environments where people can thrive. Our dedicated team brings passion, expertise, and meticulous attention to detail to every job. We&apos;re not just cleaners; we&apos;re your partners in maintaining the spaces you love.
             </p>
           </FadeIn>
         </div>
@@ -63,8 +77,8 @@ export default function AboutPage() {
           <StaggerContainer staggerDelay={0.1} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {VALUES.map((value) => (
               <StaggerItem key={value.id}>
-                <div className="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-xl transition-all duration-300 ease-out hover:-translate-y-1 group h-full">
-                  <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-gold/20 transition-colors">
+                <div className="bg-white rounded-md p-6 text-center border border-gray-100/80 shadow-sm hover:shadow-lg hover:shadow-gray-200/50 hover:border-gray-200 transition-all duration-300 ease-out hover:-translate-y-0.5 group h-full">
+                  <div className="w-14 h-14 bg-gold/10 rounded-md flex items-center justify-center mx-auto mb-4 group-hover:bg-gold/20 transition-colors">
                     <MaterialIcon name={value.icon} size="lg" className="text-gold" />
                   </div>
                   <h3 className="font-heading text-lg font-bold text-text mb-2">
@@ -85,13 +99,12 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Single card with image left, content right */}
           <FadeInScale>
-            <div className="rounded-2xl shadow-lg overflow-hidden grid grid-cols-1 lg:grid-cols-2 bg-white">
+            <div className="rounded-md shadow-lg overflow-hidden grid grid-cols-1 lg:grid-cols-2 bg-white">
               {/* Left - Team Image */}
               <SlideInLeft className="relative min-h-[300px] lg:min-h-[400px]">
-                <Image
+                <ImageWithSkeleton
                   src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80"
                   alt="FiveStarsCleaning professional team"
-                  fill
                   className="object-cover"
                 />
               </SlideInLeft>
@@ -111,7 +124,7 @@ export default function AboutPage() {
                 {/* Features list */}
                 <div className="space-y-5">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 bg-gold/10 rounded-md flex items-center justify-center flex-shrink-0">
                       <MaterialIcon name="verified_user" className="text-gold" />
                     </div>
                     <div>
@@ -121,7 +134,7 @@ export default function AboutPage() {
                   </div>
                   
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 bg-gold/10 rounded-md flex items-center justify-center flex-shrink-0">
                       <MaterialIcon name="school" className="text-gold" />
                     </div>
                     <div>
@@ -131,7 +144,7 @@ export default function AboutPage() {
                   </div>
                   
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 bg-gold/10 rounded-md flex items-center justify-center flex-shrink-0">
                       <MaterialIcon name="shield" className="text-gold" />
                     </div>
                     <div>
@@ -162,9 +175,9 @@ export default function AboutPage() {
           <StaggerContainer staggerDelay={0.1} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {FEATURES.map((feature) => (
               <StaggerItem key={feature.id}>
-                <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 ease-out hover:-translate-y-1 group h-full">
+                <div className="bg-white rounded-md p-6 border border-gray-100/80 shadow-sm hover:shadow-lg hover:shadow-gray-200/50 hover:border-gray-200 transition-all duration-300 ease-out hover:-translate-y-0.5 group h-full">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                    <div className="w-12 h-12 bg-primary/10 rounded-md flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                       <MaterialIcon name={feature.icon} className="text-primary" />
                     </div>
                     <div>
@@ -188,10 +201,10 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <FadeIn>
             <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-              Let us take care of the cleaning for you
+              Ready for a spotless space?
             </h2>
             <p className="text-white/80 text-base max-w-2xl mx-auto mb-8">
-              Join thousands of happy Queenstown residents who&apos;ve reclaimed their free time with FiveStarsCleaning.
+              Join Queenstown locals who trust FiveStars for their cleaning needs. Get your free quote today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -199,7 +212,7 @@ export default function AboutPage() {
                 size="lg"
                 href="/contact"
               >
-                Get a Free Quote →
+                Get a Free Quote
               </Button>
               <Button
                 variant="outline"

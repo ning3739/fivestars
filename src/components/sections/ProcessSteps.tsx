@@ -59,14 +59,14 @@ export function ProcessSteps({
       data-testid="process-steps-section"
       className={cn(
         'w-full',
-        'py-12 sm:py-16 lg:py-20',
+        'py-16 md:py-20',
         'bg-white',
         className
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <FadeIn className="text-center mb-10 sm:mb-12 lg:mb-16">
+        <FadeIn className="text-center mb-12">
           <h2
             data-testid="process-steps-title"
             className={cn(
@@ -83,7 +83,8 @@ export function ProcessSteps({
             className={cn(
               'text-text-secondary',
               'text-base sm:text-lg',
-              'max-w-2xl mx-auto'
+              'max-w-2xl mx-auto',
+              'leading-relaxed'
             )}
           >
             We&apos;ve made it simple to get your space sparkling clean. Here&apos;s how it works.

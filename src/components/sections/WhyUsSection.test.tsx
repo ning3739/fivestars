@@ -189,7 +189,7 @@ describe('WhyUsSection', () => {
     it('applies rounded styling to icon containers', () => {
       render(<WhyUsSection />);
       const iconContainer = screen.getByTestId('feature-icon-fully-insured');
-      expect(iconContainer).toHaveClass('rounded-lg');
+      expect(iconContainer).toHaveClass('rounded-md');
     });
   });
 

@@ -166,9 +166,9 @@ describe('Button', () => {
   });
 
   describe('Base Styles', () => {
-    it('applies rounded-lg for rounded corners', () => {
+    it('applies rounded for rounded corners', () => {
       render(<Button variant="primary" size="md">Button</Button>);
-      expect(screen.getByRole('button')).toHaveClass('rounded-lg');
+      expect(screen.getByRole('button')).toHaveClass('rounded');
     });
 
     it('applies flex layout for icon alignment', () => {

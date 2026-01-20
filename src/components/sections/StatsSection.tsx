@@ -12,12 +12,12 @@ const STATS = [
 export function StatsSection() {
   return (
     <section
-      className="py-16 md:py-20 lg:py-24 bg-background-secondary"
+      className="py-16 md:py-20 bg-background-secondary"
       data-testid="stats-section"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeInScale>
-          <div className="rounded-2xl shadow-lg overflow-hidden grid grid-cols-1 lg:grid-cols-2 bg-white">
+          <div className="rounded-md shadow-lg overflow-hidden grid grid-cols-1 lg:grid-cols-2 bg-white">
             {/* Left - Team Image */}
             <div className="relative min-h-[300px] lg:min-h-[350px]">
               <Image

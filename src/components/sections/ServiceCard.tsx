@@ -61,7 +61,7 @@ export function ServiceCard({
       <div
         className={cn(
           'flex items-center justify-center',
-          'w-14 h-14 rounded-xl',
+          'w-14 h-14 rounded-md',
           'bg-gold/10',
           'mb-5'
         )}

@@ -52,14 +52,14 @@ describe('Card', () => {
       expect(card).toHaveClass('bg-white');
     });
 
-    it('applies rounded-xl for rounded corners per design system', () => {
+    it('applies rounded-md for rounded corners per design system', () => {
       render(
         <Card>
           <p>Content</p>
         </Card>
       );
       const card = screen.getByText('Content').parentElement;
-      expect(card).toHaveClass('rounded-xl');
+      expect(card).toHaveClass('rounded-md');
     });
 
     it('applies shadow-md per design system', () => {
@@ -161,7 +161,7 @@ describe('Card', () => {
       expect(card).toHaveClass('mt-4');
       expect(card).toHaveClass('max-w-md');
       expect(card).toHaveClass('bg-white');
-      expect(card).toHaveClass('rounded-xl');
+      expect(card).toHaveClass('rounded-md');
     });
 
     it('allows overriding default styles with custom className', () => {

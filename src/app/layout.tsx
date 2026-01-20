@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
+import { TopBanner } from "@/components/layout/TopBanner";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { FloatingCallButton } from "@/components/layout/FloatingCallButton";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -99,17 +101,22 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${manrope.variable} antialiased flex flex-col min-h-screen`}
       >
-        {/* Fixed Navigation Bar */}
+        {/* Top Banner with Contact Info */}
+        <TopBanner />
+        
+        {/* Sticky Navigation Bar */}
         <Navbar />
         
-        {/* Main Content Area with padding-top for fixed navbar */}
-        {/* Navbar height: h-16 (64px) on mobile, h-20 (80px) on md+ */}
-        <main className="flex-1 pt-16 md:pt-20">
+        {/* Main Content Area */}
+        <main className="flex-1">
           {children}
         </main>
         
         {/* Footer */}
         <Footer />
+
+        {/* Floating Call Button - Mobile Only */}
+        <FloatingCallButton />
       </body>
     </html>
   );

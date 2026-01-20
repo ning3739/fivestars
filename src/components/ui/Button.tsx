@@ -99,7 +99,7 @@ export function Button({
   const baseClasses = cn(
     // Base styles
     'inline-flex items-center justify-center gap-2',
-    'font-medium rounded-lg',
+    'font-medium rounded',
     'transition-all duration-200 ease-out',
     'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2',
     'transform hover:scale-[1.02] active:scale-[0.98]',

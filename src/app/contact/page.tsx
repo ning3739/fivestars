@@ -4,27 +4,99 @@
  * Contact Page - Matching Figma Design
  */
 
+import { useState } from 'react';
 import { Hero } from '@/components/sections/Hero';
 import { ContactForm } from '@/components/sections/ContactForm';
 import { MaterialIcon } from '@/components/icons/MaterialIcon';
 import { CONTACT_INFO } from '@/lib/constants';
-import { FadeIn, SlideInLeft, SlideInRight, FadeInScale } from '@/components/ui/Motion';
+import { FadeIn, SlideInLeft, SlideInRight, FadeInScale, StaggerContainer, StaggerItem } from '@/components/ui/Motion';
 
 /**
  * Service areas covered by FiveStarsCleaning
  */
-const SERVICE_AREAS = ['Queenstown Central', 'Frankton', 'Arrowtown', 'Kelvin Heights'];
+const SERVICE_AREAS = ['Queenstown Central', 'Frankton', 'Arrowtown', 'Kelvin Heights', 'Jacks Point', 'Lake Hayes'];
+
+/**
+ * Why contact us - trust points
+ */
+const TRUST_POINTS = [
+  {
+    icon: 'schedule',
+    title: '24-Hour Response',
+    description: 'We respond to all inquiries within 24 hours, guaranteed.',
+  },
+  {
+    icon: 'verified',
+    title: 'Free Consultation',
+    description: 'No obligation quotes tailored to your specific needs.',
+  },
+  {
+    icon: 'shield',
+    title: 'Fully Insured',
+    description: 'Complete peace of mind with comprehensive coverage.',
+  },
+];
+
+/**
+ * FAQ items for contact page
+ */
+const FAQS = [
+  {
+    question: 'How do I book a cleaning service?',
+    answer: 'Simply fill out the contact form above, call us, or send an email. We\'ll get back to you within 24 hours to discuss your needs and schedule a convenient time.',
+  },
+  {
+    question: 'What areas do you service?',
+    answer: 'We cover the entire Greater Queenstown region including Queenstown Central, Frankton, Arrowtown, Kelvin Heights, Jacks Point, and Lake Hayes.',
+  },
+  {
+    question: 'Do you offer one-time or regular cleaning?',
+    answer: 'We offer both! Whether you need a one-time deep clean or regular weekly/fortnightly service, we can accommodate your schedule.',
+  },
+  {
+    question: 'What payment methods do you accept?',
+    answer: 'We accept bank transfer, credit/debit cards, and cash. Payment is due after the service is completed to your satisfaction.',
+  },
+  {
+    question: 'Are your cleaners background checked?',
+    answer: 'Yes, all our team members undergo comprehensive background checks and are fully trained before joining our team.',
+  },
+];
 
 export default function ContactPage() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
   return (
     <main>
       {/* Hero Section */}
       <Hero
         variant="page"
-        title="Contact FiveStarsCleaning"
-        description="Premium cleaning services tailored to your space."
+        title="Get in Touch"
+        subtitle="CONTACT US"
+        description="Have questions or ready to book? We're here to help make your space shine."
         backgroundImage="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80"
       />
+
+      {/* Trust Points */}
+      <section className="py-12 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <StaggerContainer staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {TRUST_POINTS.map((point, index) => (
+              <StaggerItem key={index}>
+                <div className="flex items-center gap-4 p-4">
+                  <div className="w-12 h-12 bg-gold/10 rounded-md flex items-center justify-center flex-shrink-0">
+                    <MaterialIcon name={point.icon} className="text-gold" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-text">{point.title}</h3>
+                    <p className="text-text-secondary text-sm">{point.description}</p>
+                  </div>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
 
       {/* Contact Information & Form Section */}
       <section className="py-16 md:py-20 bg-white" data-testid="contact-info-section">
@@ -45,44 +117,46 @@ export default function ContactPage() {
               {/* Contact Info Items */}
               <div className="space-y-6" data-testid="contact-info-cards">
                 {/* Phone */}
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="flex items-start gap-4 group">
+                  <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
                     <MaterialIcon name="phone" className="text-gold" />
                   </div>
                   <div>
                     <span className="text-text-secondary text-xs uppercase tracking-wider">PHONE</span>
                     <a
                       href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`}
-                      className="block text-text font-semibold text-lg hover:text-primary transition-colors"
+                      className="block text-text font-semibold text-lg hover:text-primary transition-colors relative w-fit group/link"
                       data-testid="contact-phone-link"
                     >
                       {CONTACT_INFO.phone}
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover/link:w-full" />
                     </a>
                     <span className="text-text-secondary text-sm">Mon-Fri 8am - 6pm</span>
                   </div>
                 </div>
 
                 {/* Email */}
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="flex items-start gap-4 group">
+                  <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
                     <MaterialIcon name="email" className="text-gold" />
                   </div>
                   <div>
                     <span className="text-text-secondary text-xs uppercase tracking-wider">EMAIL</span>
                     <a
                       href={`mailto:${CONTACT_INFO.email}`}
-                      className="block text-text font-semibold text-lg hover:text-primary transition-colors"
+                      className="block text-text font-semibold text-lg hover:text-primary transition-colors relative w-fit group/link"
                       data-testid="contact-email-link"
                     >
                       {CONTACT_INFO.email}
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover/link:w-full" />
                     </a>
                     <span className="text-text-secondary text-sm">Online support 24/7</span>
                   </div>
                 </div>
 
                 {/* Headquarters */}
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="flex items-start gap-4 group">
+                  <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
                     <MaterialIcon name="location_on" className="text-gold" />
                   </div>
                   <div>
@@ -96,7 +170,7 @@ export default function ContactPage() {
 
             {/* Right - Contact Form */}
             <SlideInRight delay={0.2}>
-              <div className="border-2 border-dashed border-gray-200 rounded-xl p-6 sm:p-8">
+              <div className="border border-gray-200 rounded-md p-6 sm:p-8 bg-white shadow-sm">
                 <h3 className="font-heading text-xl sm:text-2xl font-bold text-text mb-6">
                   Get a Free Quote
                 </h3>
@@ -112,7 +186,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Card Container */}
           <FadeInScale>
-            <div className="rounded-2xl shadow-lg overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+            <div className="rounded-md shadow-lg overflow-hidden grid grid-cols-1 lg:grid-cols-2">
               {/* Left - Service Area Info */}
               <div className="bg-primary p-8 md:p-10 text-white flex flex-col justify-center">
                 <span className="inline-block bg-gold/20 text-gold text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4 w-fit">
@@ -131,7 +205,7 @@ export default function ContactPage() {
                   {SERVICE_AREAS.map((area) => (
                     <span
                       key={area}
-                      className="bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm px-3 py-1.5 rounded-full"
+                      className="bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm px-3 py-1.5 rounded-full transition-all duration-300 hover:bg-white/20 hover:scale-105"
                     >
                       {area}
                     </span>
@@ -154,6 +228,45 @@ export default function ContactPage() {
               </div>
             </div>
           </FadeInScale>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn className="text-center mb-12">
+            <span className="text-gold text-sm font-semibold uppercase tracking-wider">QUESTIONS</span>
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-text mt-2 mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-text-secondary text-base">
+              Find answers to common questions about our services.
+            </p>
+          </FadeIn>
+
+          <StaggerContainer staggerDelay={0.1} className="space-y-4">
+            {FAQS.map((faq, index) => (
+              <StaggerItem key={index}>
+                <div className="bg-background-secondary rounded-md border border-gray-100/80 overflow-hidden">
+                  <button
+                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                    className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+                  >
+                    <span className="font-semibold text-text pr-4">{faq.question}</span>
+                    <MaterialIcon 
+                      name={openFaq === index ? 'expand_less' : 'expand_more'} 
+                      className="text-primary flex-shrink-0"
+                    />
+                  </button>
+                  <div className={`overflow-hidden transition-all duration-300 ${openFaq === index ? 'max-h-96' : 'max-h-0'}`}>
+                    <p className="px-6 pb-4 text-text-secondary text-sm leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
         </div>
       </section>
     </main>
