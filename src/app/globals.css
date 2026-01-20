@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+/* FiveStarsCleaning Design System - Tailwind CSS 4 */
+@theme {
+  /* Primary Colors */
+  --color-primary-50: #E8EDF3;
+  --color-primary-100: #D1DBE7;
+  --color-primary-200: #A3B7CF;
+  --color-primary-300: #7593B7;
+  --color-primary-400: #476F9F;
+  --color-primary-500: #1F3A5F;
+  --color-primary-600: #1A3150;
+  --color-primary-700: #152841;
+  --color-primary-800: #101F32;
+  --color-primary-900: #0B1623;
+  --color-primary: #1F3A5F;
+
+  /* Gold Colors */
+  --color-gold-50: #FEF9E7;
+  --color-gold-100: #FDF3CF;
+  --color-gold-200: #FBE79F;
+  --color-gold-300: #F9DB6F;
+  --color-gold-400: #F7CF3F;
+  --color-gold-500: #F5C542;
+  --color-gold-600: #E5B030;
+  --color-gold-700: #C49520;
+  --color-gold-800: #A37A10;
+  --color-gold-900: #826000;
+  --color-gold: #F5C542;
+
+  /* Background Colors */
+  --color-background: #FFFFFF;
+  --color-background-secondary: #F7F9FC;
+
+  /* Text Colors */
+  --color-text: #393939;
+  --color-text-secondary: #64748b;
+
+  /* Font Families - Using Next.js font variables */
+  --font-sans: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-manrope), 'Manrope', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Base Styles */
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+/* Heading Styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Material Symbols Configuration */
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+.material-symbols-outlined.filled {
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
