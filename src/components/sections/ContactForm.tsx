@@ -359,7 +359,7 @@ export function ContactForm({ className }: ContactFormProps) {
       </div>
 
       {/* hCaptcha */}
-      <div>
+      <div className="w-full overflow-hidden">
         <HCaptcha
           ref={captchaRef}
           sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY || '50b2fe65-b00b-4b9e-ad62-3ba471098be2'}

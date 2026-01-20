@@ -160,9 +160,10 @@ export function Testimonials({
                     className={cn(
                       'w-10 h-10',
                       'rounded-full',
-                      'bg-primary',
+                      'bg-gold/20',
                       'flex items-center justify-center',
-                      'flex-shrink-0'
+                      'flex-shrink-0',
+                      'overflow-hidden'
                     )}
                   >
                     {testimonial.avatar ? (
@@ -170,10 +171,10 @@ export function Testimonials({
                       <img
                         src={testimonial.avatar}
                         alt={testimonial.name}
-                        className="w-full h-full rounded-full object-cover"
+                        className="w-full h-full object-cover"
                       />
                     ) : (
-                      <span className="text-white font-semibold text-sm">
+                      <span className="text-gold font-semibold text-sm">
                         {testimonial.name.split(' ').map(n => n[0]).join('')}
                       </span>
                     )}

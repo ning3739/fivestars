@@ -314,6 +314,7 @@ export const TESTIMONIALS: Testimonial[] = [
     location: 'Queenstown Central',
     rating: 5,
     content: 'FiveStarsCleaning has transformed our home! Their attention to detail is incredible, and the team is always friendly and professional. I highly recommend their services to anyone looking for reliable cleaning.',
+    avatar: '/images/avatar-1.jpg',
   },
   {
     id: 'testimonial-2',
@@ -321,6 +322,7 @@ export const TESTIMONIALS: Testimonial[] = [
     location: 'Frankton, Queenstown',
     rating: 5,
     content: 'As a busy professional, having FiveStarsCleaning take care of my apartment has been a game-changer. They are punctual, thorough, and my place has never looked better. Worth every penny!',
+    avatar: '/images/avatar-2.jpg',
   },
   {
     id: 'testimonial-3',
@@ -328,6 +330,7 @@ export const TESTIMONIALS: Testimonial[] = [
     location: 'Arrowtown',
     rating: 5,
     content: 'We use FiveStarsCleaning for our Airbnb properties and the results are consistently excellent. Our guests always comment on how clean and fresh everything is. Truly five-star service!',
+    avatar: '/images/avatar-3.jpg',
   },
 ];
 
