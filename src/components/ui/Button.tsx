@@ -100,14 +100,15 @@ export function Button({
     // Base styles
     'inline-flex items-center justify-center gap-2',
     'font-medium rounded-lg',
-    'transition-colors duration-200',
+    'transition-all duration-200 ease-out',
     'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2',
+    'transform hover:scale-[1.02] active:scale-[0.98]',
     // Variant styles
     variantClasses[variant],
     // Size styles
     sizeClasses[size],
     // Disabled styles
-    disabled && 'opacity-50 cursor-not-allowed pointer-events-none',
+    disabled && 'opacity-50 cursor-not-allowed pointer-events-none hover:scale-100',
     // Custom classes
     className
   );

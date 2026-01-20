@@ -110,7 +110,7 @@ export default function ContactPage() {
             <div>
               <div className="border-2 border-dashed border-gray-200 rounded-xl p-6 sm:p-8">
                 <h3 className="font-heading text-xl sm:text-2xl font-bold text-text mb-6">
-                  Send us a message
+                  Get a Free Quote
                 </h3>
                 <ContactForm />
               </div>

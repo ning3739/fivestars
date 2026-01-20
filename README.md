@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FiveStars Cleaning
 
-## Getting Started
+Professional cleaning services website for Queenstown, New Zealand.
 
-First, run the development server:
+## 🌟 Features
+
+- **Modern Design** - Clean, professional UI built with Next.js 15 and Tailwind CSS
+- **Responsive** - Fully responsive design for all devices
+- **SEO Optimized** - Complete SEO setup with meta tags, Open Graph, and structured data
+- **Fast Performance** - Optimized images and lazy loading
+- **Accessible** - WCAG compliant with proper ARIA labels
+
+## 🛠 Tech Stack
+
+- **Framework**: Next.js 15 (App Router)
+- **Styling**: Tailwind CSS 4
+- **Language**: TypeScript
+- **Testing**: Vitest + React Testing Library
+- **Icons**: Google Material Symbols
+
+## 📄 Pages
+
+- **Home** - Hero, services overview, testimonials, stats, contact form
+- **Services** - Detailed service listings with filtering
+- **About** - Company story, values, team information
+- **Contact** - Contact form, location, service areas
+
+## 🚀 Getting Started
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+
+# Run tests
+npm test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📞 Contact
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Phone**: +64 22 503 0102
+- **Email**: info@fivestarscleaning.co.nz
+- **Location**: Queenstown, New Zealand
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📝 License
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© 2026 FiveStars. All rights reserved.

@@ -116,9 +116,9 @@ export default function ServicesPage() {
  */
 function ServiceCard({ service }: { service: typeof SERVICES[0] }) {
   return (
-    <div className="bg-white border border-gray-100 rounded-xl p-6 hover:shadow-lg transition-shadow">
+    <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 ease-out hover:-translate-y-1 group">
       {/* Yellow Icon */}
-      <div className="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center mb-4">
+      <div className="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors">
         <MaterialIcon name={service.icon} className="text-gold" />
       </div>
       
@@ -143,7 +143,7 @@ function ServiceCard({ service }: { service: typeof SERVICES[0] }) {
       </ul>
       
       {/* CTA Link */}
-      <a href="/contact" className="inline-flex items-center gap-1 text-primary font-semibold text-sm hover:underline">
+      <a href="/contact" className="inline-flex items-center gap-1 text-primary font-semibold text-sm hover:underline group-hover:gap-2 transition-all">
         Book {service.name.split(' ')[0]} <MaterialIcon name="arrow_forward" size="sm" />
       </a>
     </div>

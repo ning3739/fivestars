@@ -43,14 +43,14 @@ export function ServicesSection({
   const bottomServices = SERVICES.slice(3, 5);
 
   const ServiceCard = ({ service }: { service: typeof SERVICES[0] }) => (
-    <div className="bg-white rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+    <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 ease-out hover:-translate-y-1 group">
       {/* Service Image */}
-      <div className="relative h-48 w-full">
+      <div className="relative h-48 w-full overflow-hidden">
         <Image
           src={SERVICE_IMAGES[service.id] || SERVICE_IMAGES['residential']}
           alt={service.name}
           fill
-          className="object-cover"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
         {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
@@ -79,7 +79,7 @@ export function ServicesSection({
         </ul>
         
         {/* CTA Link */}
-        <a href="/contact" className="inline-flex items-center gap-1 text-primary font-semibold text-sm hover:underline">
+        <a href="/contact" className="inline-flex items-center gap-1 text-primary font-semibold text-sm hover:underline group-hover:gap-2 transition-all">
           Book {service.name.split(' ')[0]} <MaterialIcon name="arrow_forward" size="sm" />
         </a>
       </div>

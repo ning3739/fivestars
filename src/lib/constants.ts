@@ -320,7 +320,7 @@ export const SERVICE_TYPES = [
  * Company information
  */
 export const COMPANY_INFO = {
-  name: 'FiveStarsCleaning',
+  name: 'FiveStars',
   tagline: 'Professional Cleaning Services in Queenstown',
   description: 'Queenstown\'s trusted cleaning service provider. We deliver exceptional cleaning solutions for homes and businesses with a commitment to quality, reliability, and customer satisfaction.',
   foundedYear: 2015,

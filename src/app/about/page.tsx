@@ -74,8 +74,8 @@ export default function AboutPage() {
           {/* Values Grid - 4 columns */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {VALUES.map((value) => (
-              <div key={value.id} className="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+              <div key={value.id} className="bg-white rounded-xl p-6 text-center shadow-sm hover:shadow-xl transition-all duration-300 ease-out hover:-translate-y-1 group">
+                <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-gold/20 transition-colors">
                   <MaterialIcon name={value.icon} size="lg" className="text-gold" />
                 </div>
                 <h3 className="font-heading text-lg font-bold text-text mb-2">
@@ -169,9 +169,9 @@ export default function AboutPage() {
           {/* Trust Points Grid - 3 columns with white cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {FEATURES.map((feature) => (
-              <div key={feature.id} className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div key={feature.id} className="bg-white rounded-xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 ease-out hover:-translate-y-1 group">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                     <MaterialIcon name={feature.icon} className="text-primary" />
                   </div>
                   <div>

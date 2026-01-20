@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, FormEvent, ChangeEvent } from 'react';
+import { useState, useRef, FormEvent, ChangeEvent } from 'react';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/Button';
 import { MaterialIcon } from '@/components/icons/MaterialIcon';
@@ -48,6 +49,8 @@ export function ContactForm({ className }: ContactFormProps) {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const captchaRef = useRef<HCaptcha>(null);
 
   /**
    * Handle input field changes
@@ -76,10 +79,16 @@ export function ContactForm({ className }: ContactFormProps) {
     
     // Validate form
     const validationErrors = validateForm(formData);
+    
+    // Check captcha
+    if (!captchaToken) {
+      validationErrors.message = 'Please complete the captcha verification';
+    }
+    
     setErrors(validationErrors);
     
     // If there are errors, don't submit
-    if (!isFormValid(validationErrors)) {
+    if (!isFormValid(validationErrors) || !captchaToken) {
       return;
     }
     
@@ -87,15 +96,37 @@ export function ContactForm({ className }: ContactFormProps) {
     setIsSubmitting(true);
     
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Submit directly to Web3Forms
+      const submitData = new FormData();
+      submitData.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '');
+      submitData.append('subject', `New Quote Request from ${formData.name}`);
+      submitData.append('from_name', 'FiveStars Website');
+      submitData.append('name', formData.name);
+      submitData.append('email', formData.email);
+      submitData.append('phone', formData.phone);
+      submitData.append('serviceType', formData.serviceType);
+      submitData.append('message', formData.message);
+      submitData.append('h-captcha-response', captchaToken);
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: submitData,
+      });
+
+      const data = await response.json();
+
+      if (!data.success) {
+        throw new Error('Submission failed');
+      }
       
       // Success
       setIsSubmitted(true);
       setFormData(initialFormState);
-    } catch {
-      // Handle error (in real app, would show error message)
-      console.error('Form submission failed');
+      setCaptchaToken(null);
+      captchaRef.current?.resetCaptcha();
+    } catch (error) {
+      console.error('Form submission failed:', error);
+      setErrors({ message: 'Failed to submit. Please try again or call us directly.' });
     } finally {
       setIsSubmitting(false);
     }
@@ -327,13 +358,25 @@ export function ContactForm({ className }: ContactFormProps) {
         )}
       </div>
 
+      {/* hCaptcha */}
+      <div>
+        <HCaptcha
+          ref={captchaRef}
+          sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY || '50b2fe65-b00b-4b9e-ad62-3ba471098be2'}
+          reCaptchaCompat={false}
+          onVerify={(token) => setCaptchaToken(token)}
+          onExpire={() => setCaptchaToken(null)}
+          size="normal"
+        />
+      </div>
+
       {/* Submit Button */}
-      <div className="pt-2">
+      <div>
         <Button
           type="submit"
           variant="secondary"
           size="lg"
-          disabled={isSubmitting}
+          disabled={isSubmitting || !captchaToken}
           className="w-full"
         >
           {isSubmitting ? (

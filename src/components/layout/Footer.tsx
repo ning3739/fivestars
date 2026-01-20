@@ -74,9 +74,16 @@ export function Footer({ className }: FooterProps) {
 
         {/* Bottom Bar */}
         <div className="py-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white/50 text-xs">
-            © {currentYear} {COMPANY_INFO.name}. All rights reserved.
-          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+            <p className="text-white/50 text-xs">
+              © {currentYear} {COMPANY_INFO.name}. All rights reserved.
+            </p>
+            <span className="hidden sm:inline text-white/30">|</span>
+            <div className="flex items-center gap-4 text-white/50 text-xs">
+              <Link href="/contact" className="hover:text-gold transition-colors">Privacy Policy</Link>
+              <Link href="/contact" className="hover:text-gold transition-colors">Terms of Service</Link>
+            </div>
+          </div>
           
           {/* Social Icons */}
           <div className="flex items-center gap-4">

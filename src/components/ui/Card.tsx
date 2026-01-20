@@ -67,9 +67,9 @@ export function Card({
         'p-4 sm:p-6',
         // Hover effect styles
         hover && [
-          'transition-all duration-300',
-          'hover:shadow-lg',
-          'hover:scale-[1.02]',
+          'transition-all duration-300 ease-out',
+          'hover:shadow-xl',
+          'hover:-translate-y-1',
         ],
         // Custom classes
         className
