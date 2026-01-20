@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import { MaterialIcon } from '@/components/icons/MaterialIcon';
 import { Card } from '@/components/ui/Card';
 import { TESTIMONIALS } from '@/lib/constants';
+import { FadeIn, StaggerContainer, StaggerItem } from '@/components/ui/Motion';
 import type { Testimonial } from '@/types';
 
 /**
@@ -83,7 +84,7 @@ export function Testimonials({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-10 sm:mb-12 lg:mb-16">
+        <FadeIn className="text-center mb-10 sm:mb-12 lg:mb-16">
           <h2
             data-testid="testimonials-title"
             className={cn(
@@ -105,11 +106,11 @@ export function Testimonials({
           >
             Don&apos;t just take our word for it - hear from our satisfied customers
           </p>
-        </div>
+        </FadeIn>
 
         {/* Testimonials Grid */}
-        <div
-          data-testid="testimonials-grid"
+        <StaggerContainer
+          staggerDelay={0.15}
           className={cn(
             'grid',
             'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
@@ -118,92 +119,93 @@ export function Testimonials({
           )}
         >
           {testimonials.map((testimonial) => (
-            <Card
-              key={testimonial.id}
-              data-testid={`testimonial-card-${testimonial.id}`}
-              className={cn(
-                'flex flex-col',
-                'h-full',
-                'border border-gray-100'
-              )}
-              hover
-            >
-              {/* Star Rating - at top */}
-              <div
-                data-testid={`testimonial-rating-${testimonial.id}`}
-                className="mb-4"
-              >
-                <StarRating rating={testimonial.rating} />
-              </div>
-
-              {/* Testimonial Content */}
-              <p
-                data-testid={`testimonial-content-${testimonial.id}`}
+            <StaggerItem key={testimonial.id}>
+              <Card
+                data-testid={`testimonial-card-${testimonial.id}`}
                 className={cn(
-                  'text-text',
-                  'text-base',
-                  'leading-relaxed',
-                  'flex-1',
-                  'mb-6'
+                  'flex flex-col',
+                  'h-full',
+                  'border border-gray-100'
                 )}
+                hover
               >
-                &ldquo;{testimonial.content}&rdquo;
-              </p>
-
-              {/* Customer Info - at bottom */}
-              <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
-                {/* Avatar */}
+                {/* Star Rating - at top */}
                 <div
-                  data-testid={`testimonial-avatar-${testimonial.id}`}
+                  data-testid={`testimonial-rating-${testimonial.id}`}
+                  className="mb-4"
+                >
+                  <StarRating rating={testimonial.rating} />
+                </div>
+
+                {/* Testimonial Content */}
+                <p
+                  data-testid={`testimonial-content-${testimonial.id}`}
                   className={cn(
-                    'w-10 h-10',
-                    'rounded-full',
-                    'bg-primary',
-                    'flex items-center justify-center',
-                    'flex-shrink-0'
+                    'text-text',
+                    'text-base',
+                    'leading-relaxed',
+                    'flex-1',
+                    'mb-6'
                   )}
                 >
-                  {testimonial.avatar ? (
-                    <img
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      className="w-full h-full rounded-full object-cover"
-                    />
-                  ) : (
-                    <span className="text-white font-semibold text-sm">
-                      {testimonial.name.split(' ').map(n => n[0]).join('')}
-                    </span>
-                  )}
-                </div>
+                  &ldquo;{testimonial.content}&rdquo;
+                </p>
 
-                {/* Name and Location */}
-                <div className="flex-1 min-w-0">
-                  <h3
-                    data-testid={`testimonial-name-${testimonial.id}`}
+                {/* Customer Info - at bottom */}
+                <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
+                  {/* Avatar */}
+                  <div
+                    data-testid={`testimonial-avatar-${testimonial.id}`}
                     className={cn(
-                      'font-semibold',
-                      'text-sm',
-                      'text-text',
-                      'truncate'
+                      'w-10 h-10',
+                      'rounded-full',
+                      'bg-primary',
+                      'flex items-center justify-center',
+                      'flex-shrink-0'
                     )}
                   >
-                    {testimonial.name}
-                  </h3>
-                  <p
-                    data-testid={`testimonial-location-${testimonial.id}`}
-                    className={cn(
-                      'text-text-secondary',
-                      'text-xs',
-                      'truncate'
+                    {testimonial.avatar ? (
+                      <img
+                        src={testimonial.avatar}
+                        alt={testimonial.name}
+                        className="w-full h-full rounded-full object-cover"
+                      />
+                    ) : (
+                      <span className="text-white font-semibold text-sm">
+                        {testimonial.name.split(' ').map(n => n[0]).join('')}
+                      </span>
                     )}
-                  >
-                    {testimonial.location}
-                  </p>
+                  </div>
+
+                  {/* Name and Location */}
+                  <div className="flex-1 min-w-0">
+                    <h3
+                      data-testid={`testimonial-name-${testimonial.id}`}
+                      className={cn(
+                        'font-semibold',
+                        'text-sm',
+                        'text-text',
+                        'truncate'
+                      )}
+                    >
+                      {testimonial.name}
+                    </h3>
+                    <p
+                      data-testid={`testimonial-location-${testimonial.id}`}
+                      className={cn(
+                        'text-text-secondary',
+                        'text-xs',
+                        'truncate'
+                      )}
+                    >
+                      {testimonial.location}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

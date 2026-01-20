@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { MaterialIcon } from '@/components/icons/MaterialIcon';
-import { Card } from '@/components/ui/Card';
 import { FEATURES } from '@/lib/constants';
+import { FadeIn, SlideInLeft, SlideInRight, StaggerContainer, StaggerItem } from '@/components/ui/Motion';
 import type { Feature } from '@/types';
 
 /**
@@ -60,7 +60,7 @@ export function WhyUsSection({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Image */}
-          <div className="relative">
+          <SlideInLeft className="relative">
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
               <Image
                 src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80"
@@ -70,16 +70,16 @@ export function WhyUsSection({
               />
             </div>
             {/* Floating quote card */}
-            <div className="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-xl p-6 max-w-xs hidden md:block">
+            <FadeIn delay={0.4} className="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-xl p-6 max-w-xs hidden md:block">
               <p className="text-text text-sm italic mb-3">
                 &ldquo;We don&apos;t just clean, we care for your home like it&apos;s our own.&rdquo;
               </p>
               <p className="text-primary font-semibold text-sm">— The FiveStars Team</p>
-            </div>
-          </div>
+            </FadeIn>
+          </SlideInLeft>
 
           {/* Right side - Content */}
-          <div>
+          <SlideInRight delay={0.2}>
             <span className="text-gold text-sm font-semibold uppercase tracking-wider">THE FIVESTARS STANDARD</span>
             <h2
               data-testid="why-us-title"
@@ -104,68 +104,72 @@ export function WhyUsSection({
             </p>
 
             {/* Features Grid - 2x3 */}
-            <div
-              data-testid="why-us-grid"
+            <StaggerContainer
+              staggerDelay={0.1}
               className={cn(
                 'grid',
                 'grid-cols-1 sm:grid-cols-2',
                 'gap-6'
               )}
+              data-testid="why-us-grid"
             >
               {features.map((feature) => (
-                <div
+                <StaggerItem
                   key={feature.id}
-                  data-testid={`feature-card-${feature.id}`}
-                  className="flex items-start gap-4"
                 >
-                  {/* Icon */}
                   <div
-                    data-testid={`feature-icon-${feature.id}`}
-                    className={cn(
-                      'w-10 h-10',
-                      'rounded-lg',
-                      'bg-gold/20',
-                      'flex items-center justify-center',
-                      'flex-shrink-0'
-                    )}
+                    data-testid={`feature-card-${feature.id}`}
+                    className="flex items-start gap-4"
                   >
-                    <MaterialIcon
-                      name={feature.icon}
-                      size="md"
-                      className="text-gold"
-                    />
-                  </div>
-
-                  <div>
-                    {/* Title */}
-                    <h3
-                      data-testid={`feature-title-${feature.id}`}
+                    {/* Icon */}
+                    <div
+                      data-testid={`feature-icon-${feature.id}`}
                       className={cn(
-                        'font-heading font-semibold',
-                        'text-base',
-                        'text-white',
-                        'mb-1'
+                        'w-10 h-10',
+                        'rounded-lg',
+                        'bg-gold/20',
+                        'flex items-center justify-center',
+                        'flex-shrink-0'
                       )}
                     >
-                      {feature.title}
-                    </h3>
+                      <MaterialIcon
+                        name={feature.icon}
+                        size="md"
+                        className="text-gold"
+                      />
+                    </div>
 
-                    {/* Description */}
-                    <p
-                      data-testid={`feature-description-${feature.id}`}
-                      className={cn(
-                        'text-white/70',
-                        'text-sm',
-                        'leading-relaxed'
-                      )}
-                    >
-                      {feature.description}
-                    </p>
+                    <div>
+                      {/* Title */}
+                      <h3
+                        data-testid={`feature-title-${feature.id}`}
+                        className={cn(
+                          'font-heading font-semibold',
+                          'text-base',
+                          'text-white',
+                          'mb-1'
+                        )}
+                      >
+                        {feature.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p
+                        data-testid={`feature-description-${feature.id}`}
+                        className={cn(
+                          'text-white/70',
+                          'text-sm',
+                          'leading-relaxed'
+                        )}
+                      >
+                        {feature.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
-          </div>
+            </StaggerContainer>
+          </SlideInRight>
         </div>
       </div>
     </section>

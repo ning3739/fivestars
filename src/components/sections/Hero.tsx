@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { motion } from 'motion/react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
@@ -166,27 +167,36 @@ export function Hero({
       >
         {/* Subtitle badge (only for home variant) */}
         {isHome && subtitle && (
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
             data-testid="hero-subtitle"
           >
             <span className="w-2 h-2 bg-gold rounded-full animate-pulse" />
             <span className="text-white/90 text-sm font-medium">{subtitle}</span>
-          </div>
+          </motion.div>
         )}
 
         {/* Page variant subtitle badge */}
         {!isHome && subtitle && (
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             className="inline-flex items-center justify-center gap-2 bg-gold/20 rounded-full px-4 py-1.5 mb-4 mx-auto"
             data-testid="hero-subtitle"
           >
             <span className="text-gold text-xs font-semibold uppercase tracking-wider">{subtitle}</span>
-          </div>
+          </motion.div>
         )}
 
         {/* Title */}
-        <h1
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className={cn(
             'font-heading font-bold text-white',
             isHome
@@ -197,11 +207,14 @@ export function Hero({
           data-testid="hero-title"
         >
           {renderTitle()}
-        </h1>
+        </motion.h1>
 
         {/* Description */}
         {description && (
-          <p
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
             className={cn(
               'text-white/80 mt-6',
               isHome
@@ -211,12 +224,15 @@ export function Hero({
             data-testid="hero-description"
           >
             {description}
-          </p>
+          </motion.p>
         )}
 
         {/* CTA Buttons */}
         {(primaryCTA || secondaryCTA) && (
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
             className={cn(
               'flex flex-col sm:flex-row gap-4 mt-8',
               !isHome && 'justify-center',
@@ -244,12 +260,15 @@ export function Hero({
                 {secondaryCTA.label}
               </Button>
             )}
-          </div>
+          </motion.div>
         )}
 
         {/* Trust Badges (only for home variant) - styled like Figma */}
         {isHome && badges && badges.length > 0 && (
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.9 }}
             className="flex flex-wrap gap-4 sm:gap-6 mt-10 sm:mt-14"
             data-testid="hero-badges-container"
           >
@@ -261,7 +280,7 @@ export function Hero({
                 variant="default"
               />
             ))}
-          </div>
+          </motion.div>
         )}
       </div>
     </section>

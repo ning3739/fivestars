@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { MaterialIcon } from '@/components/icons/MaterialIcon';
 import { SERVICES } from '@/lib/constants';
+import { FadeIn, StaggerContainer, StaggerItem } from '@/components/ui/Motion';
 
 /**
  * Service images from Unsplash
@@ -97,7 +98,7 @@ export function ServicesSection({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-10">
+        <FadeIn className="flex flex-col md:flex-row md:items-start md:justify-between mb-10">
           <div className="max-w-lg">
             <h2
               data-testid="services-section-title"
@@ -118,24 +119,31 @@ export function ServicesSection({
           >
             View All Services <MaterialIcon name="arrow_forward" size="sm" />
           </a>
-        </div>
+        </FadeIn>
 
         {/* Services Grid - Top Row (3 cards) */}
-        <div
-          data-testid="services-grid"
+        <StaggerContainer
+          staggerDelay={0.1}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6"
         >
           {topServices.map((service) => (
-            <ServiceCard key={service.id} service={service} />
+            <StaggerItem key={service.id}>
+              <ServiceCard service={service} />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         {/* Services Grid - Bottom Row (2 cards centered) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto lg:max-w-[66%]">
+        <StaggerContainer
+          staggerDelay={0.1}
+          className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto lg:max-w-[66%]"
+        >
           {bottomServices.map((service) => (
-            <ServiceCard key={service.id} service={service} />
+            <StaggerItem key={service.id}>
+              <ServiceCard service={service} />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );
