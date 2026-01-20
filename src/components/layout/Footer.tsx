@@ -54,7 +54,7 @@ export function Footer({ className }: FooterProps) {
             <div className="md:col-span-4">
               <Link href="/" className="inline-flex items-center gap-2 mb-4">
                 <span className="text-2xl text-gold">★</span>
-                <span className="font-heading font-bold text-lg text-white">FiveStars</span>
+                <span className="font-heading font-bold text-lg text-white">FiveStarsCleaning</span>
               </Link>
               <p className="text-white/70 text-sm leading-relaxed mb-6">
                 Queenstown&apos;s premier cleaning service. Quality you can trust, results you can see.

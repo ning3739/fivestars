@@ -4,26 +4,27 @@ Professional cleaning services website for Queenstown, New Zealand.
 
 ## 🌟 Features
 
-- **Modern Design** - Clean, professional UI built with Next.js 15 and Tailwind CSS
+- **Modern Design** - Clean, professional UI built with Next.js 16 and Tailwind CSS
 - **Responsive** - Fully responsive design for all devices
 - **SEO Optimized** - Complete SEO setup with meta tags, Open Graph, and structured data
 - **Fast Performance** - Optimized images and lazy loading
 - **Accessible** - WCAG compliant with proper ARIA labels
+- **Animations** - Smooth scroll animations with Motion
 
 ## 🛠 Tech Stack
 
-- **Framework**: Next.js 15 (App Router)
+- **Framework**: Next.js 16 (App Router)
 - **Styling**: Tailwind CSS 4
 - **Language**: TypeScript
-- **Testing**: Vitest + React Testing Library
+- **Animations**: Motion (Framer Motion)
 - **Icons**: Google Material Symbols
 
 ## 📄 Pages
 
 - **Home** - Hero, services overview, testimonials, stats, contact form
-- **Services** - Detailed service listings with filtering
+- **Services** - Detailed service pages with process steps and FAQs
 - **About** - Company story, values, team information
-- **Contact** - Contact form, location, service areas
+- **Contact** - Contact form, location map, service areas, FAQs
 
 ## 🚀 Getting Started
 
@@ -37,8 +38,8 @@ npm run dev
 # Build for production
 npm run build
 
-# Run tests
-npm test
+# Lint code
+npm run lint
 ```
 
 ## 📞 Contact
@@ -49,4 +50,4 @@ npm test
 
 ## 📝 License
 
-© 2026 FiveStars. All rights reserved.
+© 2025 FiveStarsCleaning. All rights reserved.

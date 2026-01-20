@@ -63,9 +63,10 @@ export function WhyUsSection({
           <SlideInLeft className="relative">
             <div className="relative aspect-[4/3] rounded-md overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80"
+                src="/images/residential.jpg"
                 alt="Professional cleaning team"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useLayoutEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
@@ -74,10 +74,18 @@ export function Navbar({ className }: NavbarProps) {
     setIsMobileServicesOpen(false);
   }, []);
 
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-    setIsServicesOpen(false);
-    setIsMobileServicesOpen(false);
+  // Track previous pathname to detect route changes
+  const prevPathnameRef = useRef(pathname);
+  
+  // Close menus on route change - this is intentional cascading render for UX
+  useLayoutEffect(() => {
+    if (prevPathnameRef.current !== pathname) {
+      prevPathnameRef.current = pathname;
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: close menus on navigation
+      setIsMobileMenuOpen(false);
+      setIsServicesOpen(false);
+      setIsMobileServicesOpen(false);
+    }
   }, [pathname]);
 
   useEffect(() => {
@@ -126,7 +134,7 @@ export function Navbar({ className }: NavbarProps) {
                 ? "text-white group-hover:text-gold" 
                 : "text-primary group-hover:text-primary-600"
             )}>
-              FiveStars
+              FiveStarsCleaning
             </span>
           </Link>
 

@@ -10,7 +10,8 @@ import { cn } from '@/lib/utils';
 import { Hero } from '@/components/sections/Hero';
 import { Button } from '@/components/ui/Button';
 import { MaterialIcon } from '@/components/icons/MaterialIcon';
-import { VALUES, FEATURES, COMPANY_INFO } from '@/lib/constants';
+import { VALUES, FEATURES } from '@/lib/constants';
+import { CONTACT_INFO } from '@/lib/constants';
 import { FadeIn, FadeInScale, SlideInLeft, SlideInRight, StaggerContainer, StaggerItem } from '@/components/ui/Motion';
 
 function ImageWithSkeleton({ src, alt, className }: { src: string; alt: string; className?: string }) {
@@ -22,6 +23,7 @@ function ImageWithSkeleton({ src, alt, className }: { src: string; alt: string; 
         src={src}
         alt={alt}
         fill
+        sizes="(max-width: 1024px) 100vw, 50vw"
         className={cn(className, 'transition-opacity duration-500', loaded ? 'opacity-100' : 'opacity-0')}
         onLoad={() => setLoaded(true)}
       />
@@ -38,7 +40,7 @@ export default function AboutPage() {
         title="About FiveStarsCleaning"
         subtitle="WHO WE ARE"
         description="Your trusted local cleaning experts in Queenstown. Premium cleaning services for New Zealand homes and businesses."
-        backgroundImage="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
+        backgroundImage="/images/move-in-out.jpg"
       />
 
       {/* Proudly NZ Owned & Operated Section */}
@@ -103,7 +105,7 @@ export default function AboutPage() {
               {/* Left - Team Image */}
               <SlideInLeft className="relative min-h-[300px] lg:min-h-[400px]">
                 <ImageWithSkeleton
-                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80"
+                  src="/images/team.jpg"
                   alt="FiveStarsCleaning professional team"
                   className="object-cover"
                 />
@@ -177,8 +179,8 @@ export default function AboutPage() {
               <StaggerItem key={feature.id}>
                 <div className="bg-white rounded-md p-6 border border-gray-100/80 shadow-sm hover:shadow-lg hover:shadow-gray-200/50 hover:border-gray-200 transition-all duration-300 ease-out hover:-translate-y-0.5 group h-full">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-md flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                      <MaterialIcon name={feature.icon} className="text-primary" />
+                    <div className="w-12 h-12 bg-gold/10 rounded-md flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
+                      <MaterialIcon name={feature.icon} className="text-gold" />
                     </div>
                     <div>
                       <h3 className="font-heading text-base font-bold text-text mb-1">
@@ -217,10 +219,11 @@ export default function AboutPage() {
               <Button
                 variant="outline"
                 size="lg"
-                href="/contact"
+                href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`}
                 className="border-white text-white hover:bg-white hover:text-primary"
+                icon="phone"
               >
-                Contact Us
+                {CONTACT_INFO.phone}
               </Button>
             </div>
           </FadeIn>

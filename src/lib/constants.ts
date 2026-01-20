@@ -131,7 +131,7 @@ export const SERVICE_DETAILS: Record<string, {
 }> = {
   'residential': {
     longDescription: 'Our residential cleaning service is designed to give you back your precious time while ensuring your home is always welcoming and comfortable. We understand that every home is unique, which is why we offer customizable cleaning plans that fit your lifestyle and budget. Our trained professionals use eco-friendly products and proven techniques to deliver consistent, high-quality results.',
-    image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=80',
+    image: '/images/residential.jpg',
     process: [
       { step: 1, title: 'Initial Consultation', description: 'We assess your home and discuss your specific cleaning needs and preferences.' },
       { step: 2, title: 'Custom Plan', description: 'We create a tailored cleaning schedule that works with your lifestyle.' },
@@ -156,7 +156,7 @@ export const SERVICE_DETAILS: Record<string, {
   },
   'commercial': {
     longDescription: 'A clean workplace is essential for productivity, employee wellbeing, and making a great impression on clients. Our commercial cleaning services are tailored to meet the unique demands of businesses, from small offices to large retail spaces. We work around your schedule to minimize disruption while maintaining the highest standards of cleanliness.',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80',
+    image: '/images/commercial.jpg',
     process: [
       { step: 1, title: 'Site Assessment', description: 'We visit your premises to understand your specific requirements and challenges.' },
       { step: 2, title: 'Custom Quote', description: 'We provide a detailed quote based on your space size and cleaning frequency.' },
@@ -181,7 +181,7 @@ export const SERVICE_DETAILS: Record<string, {
   },
   'airbnb-turnover': {
     longDescription: 'First impressions matter in the hospitality industry. Our Airbnb turnover service ensures your property is guest-ready with quick turnaround times and meticulous attention to detail. We help you maintain those crucial 5-star reviews by presenting a spotless, welcoming space for every guest arrival.',
-    image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&q=80',
+    image: '/images/airbnb.jpg',
     process: [
       { step: 1, title: 'Booking Integration', description: 'We sync with your booking calendar for automatic scheduling.' },
       { step: 2, title: 'Quick Turnaround', description: 'Our team arrives promptly after checkout to prepare for the next guest.' },
@@ -206,7 +206,7 @@ export const SERVICE_DETAILS: Record<string, {
   },
   'deep-cleaning': {
     longDescription: 'Sometimes your home needs more than a regular clean. Our deep cleaning service tackles the areas that are often overlooked in routine cleaning - behind appliances, inside cabinets, and those hard-to-reach corners. Perfect for spring cleaning, preparing for special events, or giving your home a fresh start.',
-    image: 'https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=1200&q=80',
+    image: '/images/deep-cleaning.jpg',
     process: [
       { step: 1, title: 'Detailed Assessment', description: 'We identify priority areas and discuss any specific concerns.' },
       { step: 2, title: 'Systematic Approach', description: 'We work room by room, ensuring nothing is missed.' },
@@ -231,7 +231,7 @@ export const SERVICE_DETAILS: Record<string, {
   },
   'move-in-out': {
     longDescription: 'Moving is stressful enough without worrying about cleaning. Our move in/out cleaning service ensures you leave your old place in perfect condition for bond return, or start fresh in your new home. We handle everything from carpet cleaning to wall marks, so you can focus on your move.',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80',
+    image: '/images/move-in-out.jpg',
     process: [
       { step: 1, title: 'Pre-Move Assessment', description: 'We evaluate the property and note any specific requirements.' },
       { step: 2, title: 'Comprehensive Clean', description: 'Every room is thoroughly cleaned from top to bottom.' },
@@ -457,7 +457,7 @@ export const SERVICE_TYPES = [
  * Company information
  */
 export const COMPANY_INFO = {
-  name: 'FiveStars',
+  name: 'FiveStarsCleaning',
   tagline: 'Professional Cleaning Services in Queenstown',
   description: 'Queenstown\'s trusted cleaning service provider. We deliver exceptional cleaning solutions for homes and businesses with a commitment to quality, reliability, and customer satisfaction.',
   foundedYear: 2025,

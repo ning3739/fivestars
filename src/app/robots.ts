@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/api/',
     },
-    sitemap: 'https://fivestars.co.nz/sitemap.xml',
+    sitemap: 'https://fivestarscleaning.co.nz/sitemap.xml',
   };
 }

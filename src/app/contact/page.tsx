@@ -74,7 +74,7 @@ export default function ContactPage() {
         title="Get in Touch"
         subtitle="CONTACT US"
         description="Have questions or ready to book? We're here to help make your space shine."
-        backgroundImage="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80"
+        backgroundImage="/images/commercial.jpg"
       />
 
       {/* Trust Points */}
@@ -101,76 +101,80 @@ export default function ContactPage() {
       {/* Contact Information & Form Section */}
       <section className="py-16 md:py-20 bg-white" data-testid="contact-info-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
             {/* Left - Contact Information */}
-            <SlideInLeft>
-              <span className="inline-block bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
-                GET IN TOUCH
-              </span>
-              <h2 className="font-heading text-3xl sm:text-4xl font-bold text-text mb-4">
-                We&apos;re here to help.
-              </h2>
-              <p className="text-text-secondary text-base mb-10">
-                Experience the FiveStars difference. Contact us today for a consultation or to schedule your first premium clean.
-              </p>
+            <SlideInLeft className="h-full">
+              <div className="border border-gray-200 rounded-md p-6 sm:p-8 bg-white shadow-sm h-full flex flex-col">
+                <span className="text-gold text-sm font-semibold uppercase tracking-wider">
+                  GET IN TOUCH
+                </span>
+                <h2 className="font-heading text-2xl sm:text-3xl font-bold text-text mt-2 mb-3">
+                  We&apos;re here to help.
+                </h2>
+                <p className="text-text-secondary text-base mb-6">
+                  Experience the FiveStars difference. Contact us today for a consultation or to schedule your first premium clean.
+                </p>
 
-              {/* Contact Info Items */}
-              <div className="space-y-6" data-testid="contact-info-cards">
-                {/* Phone */}
-                <div className="flex items-start gap-4 group">
-                  <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
-                    <MaterialIcon name="phone" className="text-gold" />
-                  </div>
-                  <div>
-                    <span className="text-text-secondary text-xs uppercase tracking-wider">PHONE</span>
-                    <a
-                      href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`}
-                      className="block text-text font-semibold text-lg hover:text-primary transition-colors relative w-fit group/link"
-                      data-testid="contact-phone-link"
-                    >
-                      {CONTACT_INFO.phone}
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover/link:w-full" />
-                    </a>
-                    <span className="text-text-secondary text-sm">Mon-Fri 8am - 6pm</span>
-                  </div>
-                </div>
+                {/* Contact Info Cards - Single Column Layout */}
+                <div className="flex flex-col gap-3 flex-1" data-testid="contact-info-cards">
+                  {/* Phone */}
+                  <a
+                    href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`}
+                    className="flex items-start gap-3 p-4 bg-background-secondary rounded-md hover:bg-gray-100 transition-colors group"
+                    data-testid="contact-phone-link"
+                  >
+                    <div className="w-10 h-10 bg-gold/10 rounded-md flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
+                      <MaterialIcon name="phone" className="text-gold" size="sm" />
+                    </div>
+                    <div>
+                      <span className="text-text-secondary text-xs uppercase tracking-wider">Phone</span>
+                      <p className="text-text font-semibold">{CONTACT_INFO.phone}</p>
+                    </div>
+                  </a>
 
-                {/* Email */}
-                <div className="flex items-start gap-4 group">
-                  <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
-                    <MaterialIcon name="email" className="text-gold" />
-                  </div>
-                  <div>
-                    <span className="text-text-secondary text-xs uppercase tracking-wider">EMAIL</span>
-                    <a
-                      href={`mailto:${CONTACT_INFO.email}`}
-                      className="block text-text font-semibold text-lg hover:text-primary transition-colors relative w-fit group/link"
-                      data-testid="contact-email-link"
-                    >
-                      {CONTACT_INFO.email}
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover/link:w-full" />
-                    </a>
-                    <span className="text-text-secondary text-sm">Online support 24/7</span>
-                  </div>
-                </div>
+                  {/* Email */}
+                  <a
+                    href={`mailto:${CONTACT_INFO.email}`}
+                    className="flex items-start gap-3 p-4 bg-background-secondary rounded-md hover:bg-gray-100 transition-colors group"
+                    data-testid="contact-email-link"
+                  >
+                    <div className="w-10 h-10 bg-gold/10 rounded-md flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
+                      <MaterialIcon name="email" className="text-gold" size="sm" />
+                    </div>
+                    <div>
+                      <span className="text-text-secondary text-xs uppercase tracking-wider">Email</span>
+                      <p className="text-text font-semibold text-sm break-all">{CONTACT_INFO.email}</p>
+                    </div>
+                  </a>
 
-                {/* Headquarters */}
-                <div className="flex items-start gap-4 group">
-                  <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
-                    <MaterialIcon name="location_on" className="text-gold" />
+                  {/* Location */}
+                  <div className="flex items-start gap-3 p-4 bg-background-secondary rounded-md">
+                    <div className="w-10 h-10 bg-gold/10 rounded-md flex items-center justify-center flex-shrink-0">
+                      <MaterialIcon name="location_on" className="text-gold" size="sm" />
+                    </div>
+                    <div>
+                      <span className="text-text-secondary text-xs uppercase tracking-wider">Address</span>
+                      <p className="text-text font-semibold text-sm">{CONTACT_INFO.address}</p>
+                    </div>
                   </div>
-                  <div>
-                    <span className="text-text-secondary text-xs uppercase tracking-wider">HEADQUARTERS</span>
-                    <p className="text-text font-semibold text-lg">Queenstown Central</p>
-                    <span className="text-text-secondary text-sm">10 Athol Street, Queenstown 9300</span>
+
+                  {/* Hours */}
+                  <div className="flex items-start gap-3 p-4 bg-background-secondary rounded-md">
+                    <div className="w-10 h-10 bg-gold/10 rounded-md flex items-center justify-center flex-shrink-0">
+                      <MaterialIcon name="schedule" className="text-gold" size="sm" />
+                    </div>
+                    <div>
+                      <span className="text-text-secondary text-xs uppercase tracking-wider">Hours</span>
+                      <p className="text-text font-semibold text-sm">{CONTACT_INFO.hours}</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </SlideInLeft>
 
             {/* Right - Contact Form */}
-            <SlideInRight delay={0.2}>
-              <div className="border border-gray-200 rounded-md p-6 sm:p-8 bg-white shadow-sm">
+            <SlideInRight delay={0.2} className="h-full">
+              <div className="border border-gray-200 rounded-md p-6 sm:p-8 bg-white shadow-sm h-full">
                 <h3 className="font-heading text-xl sm:text-2xl font-bold text-text mb-6">
                   Get a Free Quote
                 </h3>

@@ -90,7 +90,7 @@ export function Testimonials({
             className={cn(
               'font-heading font-bold',
               'text-2xl sm:text-3xl lg:text-4xl',
-              'text-primary',
+              'text-text',
               'mb-4'
             )}
           >
@@ -166,6 +166,7 @@ export function Testimonials({
                     )}
                   >
                     {testimonial.avatar ? (
+                      // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={testimonial.avatar}
                         alt={testimonial.name}

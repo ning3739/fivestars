@@ -21,9 +21,10 @@ export function StatsSection() {
             {/* Left - Team Image */}
             <div className="relative min-h-[300px] lg:min-h-[350px]">
               <Image
-                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80"
+                src="/images/team.jpg"
                 alt="FiveStars professional team"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>

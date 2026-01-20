@@ -31,16 +31,16 @@ import { HomeContactSection } from '@/components/sections/HomeContactSection';
 import { TRUST_BADGES, CONTACT_INFO } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'FiveStars - Professional Cleaning Services in Queenstown | Home',
+  title: 'FiveStarsCleaning - Professional Cleaning Services in Queenstown | Home',
   description: 'Transform your living space with Queenstown\'s most trusted cleaning professionals. Residential & commercial cleaning, eco-friendly products, 100% satisfaction guaranteed. Get a free quote today!',
-  keywords: ['Queenstown cleaning', 'house cleaning Queenstown', 'professional cleaners NZ', 'eco-friendly cleaning', 'residential cleaning', 'commercial cleaning'],
+  keywords: ['Queenstown cleaning', 'house cleaning Queenstown', 'professional cleaners NZ', 'eco-friendly cleaning', 'residential cleaning', 'commercial cleaning', 'Airbnb cleaning Queenstown'],
   openGraph: {
-    title: 'FiveStars - Professional Cleaning Services in Queenstown',
+    title: 'FiveStarsCleaning - Professional Cleaning Services in Queenstown',
     description: 'Transform your living space with Queenstown\'s most trusted cleaning professionals. Get a free quote today!',
-    url: 'https://fivestars.co.nz',
+    url: 'https://fivestarscleaning.co.nz',
   },
   alternates: {
-    canonical: 'https://fivestars.co.nz',
+    canonical: 'https://fivestarscleaning.co.nz',
   },
 };
 
@@ -49,10 +49,10 @@ export default function Home() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: 'FiveStars Cleaning',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80',
-    '@id': 'https://fivestars.co.nz',
-    url: 'https://fivestars.co.nz',
+    name: 'FiveStarsCleaning',
+    image: 'https://fivestarscleaning.co.nz/images/move-in-out.jpg',
+    '@id': 'https://fivestarscleaning.co.nz',
+    url: 'https://fivestarscleaning.co.nz',
     telephone: '+64225030102',
     email: 'info@fivestarscleaning.co.nz',
     address: {
@@ -67,17 +67,45 @@ export default function Home() {
       latitude: -45.0312,
       longitude: 168.6626,
     },
-    openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '08:00',
-      closes: '18:00',
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '08:00',
+        closes: '18:00',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: 'Saturday',
+        opens: '09:00',
+        closes: '16:00',
+      },
+    ],
+    areaServed: {
+      '@type': 'GeoCircle',
+      geoMidpoint: {
+        '@type': 'GeoCoordinates',
+        latitude: -45.0312,
+        longitude: 168.6626,
+      },
+      geoRadius: '50000',
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Cleaning Services',
+      itemListElement: [
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Residential Cleaning' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Commercial Cleaning' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Airbnb Turnover' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Deep Cleaning' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Move In/Out Cleaning' } },
+      ],
     },
     sameAs: [
       'https://facebook.com/fivestarscleaning',
       'https://instagram.com/fivestarscleaning',
     ],
-    priceRange: '$$',
+    priceRange: '$',
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '5',
@@ -92,43 +120,43 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <main>
-      {/* Hero Section - Full screen with background, tagline, CTAs, and trust badges */}
-      <Hero
-        variant="home"
-        title="Professional Cleaning Services for New Zealand Homes"
-        subtitle="A PREMIUM CLEANING EXPERIENCE"
-        highlightedText="New Zealand Homes"
-        description="Transform your living space with Queenstown's most trusted cleaning professionals. We deliver exceptional results with eco-friendly products and meticulous attention to detail."
-        primaryCTA={{
-          label: 'Get Your Free Quote',
-          href: '/contact',
-        }}
-        secondaryCTA={{
-          label: CONTACT_INFO.phone,
-          href: `tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`,
-        }}
-        badges={[...TRUST_BADGES]}
-        backgroundImage="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
-      />
+        {/* Hero Section - Full screen with background, tagline, CTAs, and trust badges */}
+        <Hero
+          variant="home"
+          title="Professional Cleaning Services for New Zealand Homes"
+          subtitle="A PREMIUM CLEANING EXPERIENCE"
+          highlightedText="New Zealand Homes"
+          description="Transform your living space with Queenstown's most trusted cleaning professionals. We deliver exceptional results with eco-friendly products and meticulous attention to detail."
+          primaryCTA={{
+            label: 'Get Your Free Quote',
+            href: '/contact',
+          }}
+          secondaryCTA={{
+            label: CONTACT_INFO.phone,
+            href: `tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`,
+          }}
+          badges={[...TRUST_BADGES]}
+          backgroundImage="/images/move-in-out.jpg"
+        />
 
-      {/* Process Steps - 3-step process: Book Online → We Clean → Enjoy */}
-      <ProcessSteps />
+        {/* Process Steps - 3-step process: Book Online → We Clean → Enjoy */}
+        <ProcessSteps />
 
-      {/* Services Section - 5 service cards */}
-      <ServicesSection />
+        {/* Services Section - 5 service cards */}
+        <ServicesSection />
 
-      {/* Why Us Section - 6 company features */}
-      <WhyUsSection />
+        {/* Why Us Section - 6 company features */}
+        <WhyUsSection />
 
-      {/* Testimonials - 3 customer 5-star reviews */}
-      <Testimonials />
+        {/* Testimonials - 3 customer 5-star reviews */}
+        <Testimonials />
 
-      {/* Stats Section - Single Card with Image + Content */}
-      <StatsSection />
+        {/* Stats Section - Single Card with Image + Content */}
+        <StatsSection />
 
-      {/* Contact Section - Single Card with two halves */}
-      <HomeContactSection />
-    </main>
+        {/* Contact Section - Single Card with two halves */}
+        <HomeContactSection />
+      </main>
     </>
   );
 }

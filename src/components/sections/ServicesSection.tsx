@@ -12,11 +12,11 @@ import { FadeIn, StaggerContainer, StaggerItem } from '@/components/ui/Motion';
  * Service images from Unsplash
  */
 const SERVICE_IMAGES: Record<string, string> = {
-  'residential': 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&q=80',
-  'commercial': 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80',
-  'airbnb-turnover': 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80',
-  'deep-cleaning': 'https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=600&q=80',
-  'move-in-out': 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80',
+  'residential': '/images/residential.jpg',
+  'commercial': '/images/commercial.jpg',
+  'airbnb-turnover': '/images/airbnb.jpg',
+  'deep-cleaning': '/images/deep-cleaning.jpg',
+  'move-in-out': '/images/move-in-out.jpg',
 };
 
 /**
@@ -63,6 +63,7 @@ export function ServicesSection({
             src={SERVICE_IMAGES[service.id] || SERVICE_IMAGES['residential']}
             alt={service.name}
             fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className={cn(
               "object-cover transition-all duration-500 group-hover:scale-105",
               imageLoaded ? "opacity-100" : "opacity-0"
@@ -88,8 +89,8 @@ export function ServicesSection({
           {/* Features list */}
           <ul className="space-y-2 mb-4 flex-1">
             {service.features.slice(0, 3).map((feature, idx) => (
-              <li key={idx} className="flex items-start gap-2 text-sm text-text-secondary">
-                <MaterialIcon name="check_circle" size="sm" className="text-gold flex-shrink-0 mt-0.5" filled />
+              <li key={idx} className="flex items-center gap-2 text-sm text-text-secondary">
+                <MaterialIcon name="check_circle" size="sm" className="text-gold flex-shrink-0" filled />
                 <span>{feature}</span>
               </li>
             ))}

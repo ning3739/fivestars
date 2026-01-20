@@ -19,16 +19,16 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://fivestars.co.nz'),
+  metadataBase: new URL('https://fivestarscleaning.co.nz'),
   title: {
-    default: "FiveStars - Professional Cleaning Services in Queenstown",
-    template: "%s | FiveStars Cleaning",
+    default: "FiveStarsCleaning - Professional Cleaning Services in Queenstown",
+    template: "%s | FiveStarsCleaning",
   },
   description: "Professional residential and commercial cleaning services in Queenstown, New Zealand. Fully insured, eco-friendly, and 100% satisfaction guaranteed. Call +64 22 503 0102.",
-  keywords: ["cleaning services", "Queenstown cleaning", "house cleaning", "commercial cleaning", "eco-friendly cleaning", "New Zealand", "professional cleaners"],
-  authors: [{ name: "FiveStars Cleaning" }],
-  creator: "FiveStars Cleaning",
-  publisher: "FiveStars Cleaning",
+  keywords: ["cleaning services", "Queenstown cleaning", "house cleaning", "commercial cleaning", "eco-friendly cleaning", "New Zealand", "professional cleaners", "Airbnb cleaning", "deep cleaning"],
+  authors: [{ name: "FiveStarsCleaning" }],
+  creator: "FiveStarsCleaning",
+  publisher: "FiveStarsCleaning",
   formatDetection: {
     email: false,
     address: false,
@@ -40,24 +40,24 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_NZ',
-    url: 'https://fivestars.co.nz',
-    siteName: 'FiveStars Cleaning',
-    title: 'FiveStars - Professional Cleaning Services in Queenstown',
+    url: 'https://fivestarscleaning.co.nz',
+    siteName: 'FiveStarsCleaning',
+    title: 'FiveStarsCleaning - Professional Cleaning Services in Queenstown',
     description: 'Professional residential and commercial cleaning services in Queenstown, New Zealand. Fully insured, eco-friendly, and 100% satisfaction guaranteed.',
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80',
+        url: '/images/move-in-out.jpg',
         width: 1200,
         height: 630,
-        alt: 'FiveStars Professional Cleaning Services',
+        alt: 'FiveStarsCleaning Professional Cleaning Services',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'FiveStars - Professional Cleaning Services in Queenstown',
+    title: 'FiveStarsCleaning - Professional Cleaning Services in Queenstown',
     description: 'Professional residential and commercial cleaning services in Queenstown, New Zealand.',
-    images: ['https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80'],
+    images: ['/images/move-in-out.jpg'],
   },
   robots: {
     index: true,
@@ -89,7 +89,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <head>
         {/* Google Material Symbols - using display=swap for better performance */}
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
