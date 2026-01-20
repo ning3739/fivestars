@@ -143,9 +143,13 @@ export function Navbar({ className }: NavbarProps) {
           {/* Desktop CTA Button */}
           <div className="hidden md:block">
             <Button
-              variant={isTransparent ? "secondary" : "primary"}
+              variant="primary"
               size="sm"
               href="/contact"
+              className={cn(
+                "min-w-[120px]",
+                isTransparent && "bg-gold text-primary hover:bg-gold-400"
+              )}
             >
               Get a Quote
             </Button>
