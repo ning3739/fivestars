@@ -20,6 +20,7 @@
  * @validates Requirements 2.7 - Contact form at bottom
  */
 
+import type { Metadata } from 'next';
 import { Hero } from '@/components/sections/Hero';
 import { ProcessSteps } from '@/components/sections/ProcessSteps';
 import { ServicesSection } from '@/components/sections/ServicesSection';
@@ -29,9 +30,68 @@ import { ContactForm } from '@/components/sections/ContactForm';
 import { TRUST_BADGES, CONTACT_INFO } from '@/lib/constants';
 import Image from 'next/image';
 
+export const metadata: Metadata = {
+  title: 'FiveStars - Professional Cleaning Services in Queenstown | Home',
+  description: 'Transform your living space with Queenstown\'s most trusted cleaning professionals. Residential & commercial cleaning, eco-friendly products, 100% satisfaction guaranteed. Get a free quote today!',
+  keywords: ['Queenstown cleaning', 'house cleaning Queenstown', 'professional cleaners NZ', 'eco-friendly cleaning', 'residential cleaning', 'commercial cleaning'],
+  openGraph: {
+    title: 'FiveStars - Professional Cleaning Services in Queenstown',
+    description: 'Transform your living space with Queenstown\'s most trusted cleaning professionals. Get a free quote today!',
+    url: 'https://fivestars.co.nz',
+  },
+  alternates: {
+    canonical: 'https://fivestars.co.nz',
+  },
+};
+
 export default function Home() {
+  // JSON-LD structured data for local business
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'FiveStars Cleaning',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80',
+    '@id': 'https://fivestars.co.nz',
+    url: 'https://fivestars.co.nz',
+    telephone: '+64225030102',
+    email: 'info@fivestarscleaning.co.nz',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '10 Athol Street',
+      addressLocality: 'Queenstown',
+      postalCode: '9300',
+      addressCountry: 'NZ',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: -45.0312,
+      longitude: 168.6626,
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:00',
+      closes: '18:00',
+    },
+    sameAs: [
+      'https://facebook.com/fivestarscleaning',
+      'https://instagram.com/fivestarscleaning',
+    ],
+    priceRange: '$$',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '5',
+      reviewCount: '150',
+    },
+  };
+
   return (
-    <main>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <main>
       {/* Hero Section - Full screen with background, tagline, CTAs, and trust badges */}
       <Hero
         variant="home"
@@ -170,5 +230,6 @@ export default function Home() {
         </div>
       </section>
     </main>
+    </>
   );
 }

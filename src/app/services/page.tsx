@@ -11,6 +11,9 @@ import { MaterialIcon } from '@/components/icons/MaterialIcon';
 import { SERVICES } from '@/lib/constants';
 import { filterServices, type ServiceFilterType } from '@/lib/utils';
 
+// Note: Metadata must be in a separate file for client components
+// See src/app/services/metadata.ts
+
 export default function ServicesPage() {
   const [activeFilter, setActiveFilter] = useState<ServiceFilterType>('all');
   const filteredServices = filterServices(SERVICES, activeFilter);

@@ -17,10 +17,56 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "FiveStars - Professional Cleaning Services in Queenstown",
-  description: "Professional residential and commercial cleaning services in Queenstown, New Zealand. Fully insured, eco-friendly, and 100% satisfaction guaranteed.",
+  metadataBase: new URL('https://fivestars.co.nz'),
+  title: {
+    default: "FiveStars - Professional Cleaning Services in Queenstown",
+    template: "%s | FiveStars Cleaning",
+  },
+  description: "Professional residential and commercial cleaning services in Queenstown, New Zealand. Fully insured, eco-friendly, and 100% satisfaction guaranteed. Call +64 22 503 0102.",
+  keywords: ["cleaning services", "Queenstown cleaning", "house cleaning", "commercial cleaning", "eco-friendly cleaning", "New Zealand", "professional cleaners"],
+  authors: [{ name: "FiveStars Cleaning" }],
+  creator: "FiveStars Cleaning",
+  publisher: "FiveStars Cleaning",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
     icon: '/favicon.svg',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_NZ',
+    url: 'https://fivestars.co.nz',
+    siteName: 'FiveStars Cleaning',
+    title: 'FiveStars - Professional Cleaning Services in Queenstown',
+    description: 'Professional residential and commercial cleaning services in Queenstown, New Zealand. Fully insured, eco-friendly, and 100% satisfaction guaranteed.',
+    images: [
+      {
+        url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80',
+        width: 1200,
+        height: 630,
+        alt: 'FiveStars Professional Cleaning Services',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'FiveStars - Professional Cleaning Services in Queenstown',
+    description: 'Professional residential and commercial cleaning services in Queenstown, New Zealand.',
+    images: ['https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
