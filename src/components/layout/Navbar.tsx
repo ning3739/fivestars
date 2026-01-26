@@ -127,14 +127,20 @@ export function Navbar({ className }: NavbarProps) {
         <div className="flex items-center justify-between h-16 md:h-18">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
-            <span className="text-2xl text-gold">★</span>
+            <MaterialIcon 
+              name="star" 
+              size="md" 
+              filled
+              className={cn(
+                'transition-colors duration-300',
+                isTransparent ? 'text-gold' : 'text-gold'
+              )}
+            />
             <span className={cn(
-              "font-heading font-bold text-lg transition-colors",
-              isTransparent 
-                ? "text-white group-hover:text-gold" 
-                : "text-primary group-hover:text-primary-600"
+              'text-xl font-bold transition-colors duration-300',
+              isTransparent ? 'text-white' : 'text-primary'
             )}>
-              FiveStarsCleaning
+              FiveStars<span className="text-gold">Cleaning</span>
             </span>
           </Link>
 
