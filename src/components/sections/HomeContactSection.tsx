@@ -48,7 +48,7 @@ export function HomeContactSection() {
                     <div className="w-10 h-10 bg-gold/20 rounded-md flex items-center justify-center flex-shrink-0">
                       <span className="material-symbols-outlined text-gold">location_on</span>
                     </div>
-                    <span className="text-white font-medium">Queenstown, New Zealand</span>
+                    <span className="text-white font-medium">{CONTACT_INFO.address}</span>
                   </div>
                 </div>
 

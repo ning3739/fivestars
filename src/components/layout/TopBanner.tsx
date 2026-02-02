@@ -41,7 +41,7 @@ export function TopBanner() {
           {/* Right - Address */}
           <div className="flex items-center gap-1.5 text-white/80">
             <MaterialIcon name="location_on" size="sm" />
-            <span className="font-semibold">10 Athol Street, Queenstown 9300</span>
+            <span className="font-semibold">{CONTACT_INFO.address}</span>
           </div>
         </div>
       </div>

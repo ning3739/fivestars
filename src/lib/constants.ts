@@ -36,7 +36,7 @@ export const NAV_LINKS = [
 export const CONTACT_INFO: ContactInfo = {
   phone: '+64 22 503 0102',
   email: 'info@fivestarscleaning.co.nz',
-  address: '10 Athol Street, Queenstown 9300, New Zealand',
+  address: '38 Lochy Road, Fernhill, Queenstown',
   hours: 'Monday - Friday: 8:00 AM - 6:00 PM, Saturday: 9:00 AM - 4:00 PM',
 };
 

@@ -57,7 +57,7 @@ export default function Home() {
     email: 'info@fivestarscleaning.co.nz',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '10 Athol Street',
+      streetAddress: CONTACT_INFO.address,
       addressLocality: 'Queenstown',
       postalCode: '9300',
       addressCountry: 'NZ',
