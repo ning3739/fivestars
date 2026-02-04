@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Learn about FiveStars Cleaning - Queenstown\'s trusted local cleaning experts. NZ owned & operated, fully insured, background-verified team. Discover our mission, values, and commitment to excellence.',
-  keywords: ['about FiveStars', 'Queenstown cleaners', 'NZ owned cleaning company', 'trusted cleaners', 'professional cleaning team'],
+  description: 'Learn about Five Stars Cleaning - Queenstown\'s trusted local cleaning experts. NZ owned & operated, fully insured, background-verified team. Discover our mission, values, and commitment to excellence.',
+  keywords: ['about Five Stars', 'Queenstown cleaners', 'NZ owned cleaning company', 'trusted cleaners', 'professional cleaning team'],
   openGraph: {
-    title: 'About FiveStars Cleaning | Queenstown\'s Trusted Cleaners',
-    description: 'Learn about FiveStars Cleaning - Queenstown\'s trusted local cleaning experts.',
+    title: 'About Five Stars Cleaning | Queenstown\'s Trusted Cleaners',
+    description: 'Learn about Five Stars Cleaning - Queenstown\'s trusted local cleaning experts.',
     url: 'https://fivestars.co.nz/about',
   },
   alternates: {

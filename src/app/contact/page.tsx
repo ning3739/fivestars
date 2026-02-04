@@ -12,7 +12,7 @@ import { CONTACT_INFO } from '@/lib/constants';
 import { FadeIn, FadeInScale, StaggerContainer, StaggerItem } from '@/components/ui/Motion';
 
 /**
- * Service areas covered by FiveStarsCleaning
+ * Service areas covered by Five Stars Cleaning
  */
 const SERVICE_AREAS = ['Queenstown Central', 'Frankton', 'Arrowtown', 'Kelvin Heights', 'Jacks Point', 'Lake Hayes'];
 

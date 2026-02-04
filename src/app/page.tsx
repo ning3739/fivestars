@@ -1,7 +1,7 @@
 /**
  * Home Page
  * 
- * The main landing page for FiveStarsCleaning website.
+ * The main landing page for Five Stars Cleaning website.
  * Composed of multiple section components to showcase:
  * - Hero section with company tagline and CTAs
  * - 3-step process (Book → Clean → Enjoy)
@@ -31,11 +31,11 @@ import { HomeContactSection } from '@/components/sections/HomeContactSection';
 import { TRUST_BADGES, CONTACT_INFO } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'FiveStarsCleaning - Professional Cleaning Services in Queenstown | Home',
+  title: 'Five Stars Cleaning - Professional Cleaning Services in Queenstown | Home',
   description: 'Transform your living space with Queenstown\'s most trusted cleaning professionals. Residential & commercial cleaning, eco-friendly products, 100% satisfaction guaranteed. Get a free quote today!',
   keywords: ['Queenstown cleaning', 'house cleaning Queenstown', 'professional cleaners NZ', 'eco-friendly cleaning', 'residential cleaning', 'commercial cleaning', 'Airbnb cleaning Queenstown'],
   openGraph: {
-    title: 'FiveStarsCleaning - Professional Cleaning Services in Queenstown',
+    title: 'Five Stars Cleaning - Professional Cleaning Services in Queenstown',
     description: 'Transform your living space with Queenstown\'s most trusted cleaning professionals. Get a free quote today!',
     url: 'https://fivestarscleaning.co.nz',
   },
@@ -49,7 +49,7 @@ export default function Home() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: 'FiveStarsCleaning',
+    name: 'Five Stars Cleaning',
     image: 'https://fivestarscleaning.co.nz/images/move-in-out.jpg',
     '@id': 'https://fivestarscleaning.co.nz',
     url: 'https://fivestarscleaning.co.nz',

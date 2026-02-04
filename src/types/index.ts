@@ -1,5 +1,5 @@
 /**
- * Type definitions for FiveStarsCleaning website
+ * Type definitions for Five Stars Cleaning website
  * 
  * These types define the data structures used throughout the application
  * for services, testimonials, statistics, features, values, and contact information.

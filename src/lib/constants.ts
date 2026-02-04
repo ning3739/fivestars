@@ -1,5 +1,5 @@
 /**
- * Constants and data definitions for FiveStarsCleaning website
+ * Constants and data definitions for Five Stars Cleaning website
  * 
  * This file contains all static data used throughout the application including:
  * - Services data (5 services)
@@ -41,7 +41,7 @@ export const CONTACT_INFO: ContactInfo = {
 };
 
 /**
- * Services offered by FiveStarsCleaning
+ * Services offered by Five Stars Cleaning
  * 5 services: Residential, Commercial, Airbnb Turnover, Deep Cleaning, Move In/Out
  * 
  * @see Requirements 2.3 - Display 5 service cards
@@ -313,7 +313,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: 'Sarah Mitchell',
     location: 'Queenstown Central',
     rating: 5,
-    content: 'FiveStarsCleaning has transformed our home! Their attention to detail is incredible, and the team is always friendly and professional. I highly recommend their services to anyone looking for reliable cleaning.',
+    content: 'Five Stars Cleaning has transformed our home! Their attention to detail is incredible, and the team is always friendly and professional. I highly recommend their services to anyone looking for reliable cleaning.',
     avatar: '/images/avatar-1.jpg',
   },
   {
@@ -321,7 +321,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: 'James Chen',
     location: 'Frankton, Queenstown',
     rating: 5,
-    content: 'As a busy professional, having FiveStarsCleaning take care of my apartment has been a game-changer. They are punctual, thorough, and my place has never looked better. Worth every penny!',
+    content: 'As a busy professional, having Five Stars Cleaning take care of my apartment has been a game-changer. They are punctual, thorough, and my place has never looked better. Worth every penny!',
     avatar: '/images/avatar-2.jpg',
   },
   {
@@ -329,7 +329,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: 'Emma Thompson',
     location: 'Arrowtown',
     rating: 5,
-    content: 'We use FiveStarsCleaning for our Airbnb properties and the results are consistently excellent. Our guests always comment on how clean and fresh everything is. Truly five-star service!',
+    content: 'We use Five Stars Cleaning for our Airbnb properties and the results are consistently excellent. Our guests always comment on how clean and fresh everything is. Truly five-star service!',
     avatar: '/images/avatar-3.jpg',
   },
 ];
@@ -460,7 +460,7 @@ export const SERVICE_TYPES = [
  * Company information
  */
 export const COMPANY_INFO = {
-  name: 'FiveStarsCleaning',
+  name: 'Five Stars Cleaning',
   tagline: 'Professional Cleaning Services in Queenstown',
   description: 'Queenstown\'s trusted cleaning service provider. We deliver exceptional cleaning solutions for homes and businesses with a commitment to quality, reliability, and customer satisfaction.',
   foundedYear: 2025,

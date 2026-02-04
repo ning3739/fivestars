@@ -102,7 +102,7 @@ export function WhyUsSection({
                 'mb-6 sm:mb-8'
               )}
             >
-              Discover what makes FiveStarsCleaning the trusted choice for Queenstown homes and businesses
+              Discover what makes Five Stars Cleaning the trusted choice for Queenstown homes and businesses
             </p>
 
             {/* Features Grid - 2x3 */}

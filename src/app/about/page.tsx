@@ -37,7 +37,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <Hero
         variant="page"
-        title="About FiveStarsCleaning"
+        title="About Five Stars Cleaning"
         subtitle="WHO WE ARE"
         description="Your trusted local cleaning experts in Queenstown. Premium cleaning services for New Zealand homes and businesses."
         backgroundImage="/images/move-in-out.jpg"
@@ -107,7 +107,7 @@ export default function AboutPage() {
                 <div className="relative min-h-[250px] sm:min-h-[300px] lg:min-h-[400px]">
                   <ImageWithSkeleton
                     src="/images/team.jpg"
-                    alt="FiveStarsCleaning professional team"
+                    alt="Five Stars Cleaning professional team"
                     className="object-cover"
                   />
                 </div>

@@ -1,5 +1,5 @@
 /**
- * Form validation utilities for FiveStarsCleaning website
+ * Form validation utilities for Five Stars Cleaning website
  * 
  * Provides pure validation functions for contact form data.
  * 

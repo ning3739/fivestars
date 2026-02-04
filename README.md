@@ -50,4 +50,4 @@ npm run lint
 
 ## 📝 License
 
-© 2025 FiveStarsCleaning. All rights reserved.
+© 2025 Five Stars Cleaning. All rights reserved.
