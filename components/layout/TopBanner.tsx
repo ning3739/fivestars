@@ -13,7 +13,7 @@ export function TopBanner() {
             href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`}
             className="flex items-center gap-1.5"
           >
-            <MaterialIcon name="phone" size="sm" />
+            <MaterialIcon name="phone" size="xs" />
             <span className="font-bold text-gold">{CONTACT_INFO.phone}</span>
           </a>
         </div>
@@ -26,21 +26,21 @@ export function TopBanner() {
               href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`}
               className="flex items-center gap-1.5 hover:text-gold transition-colors"
             >
-              <MaterialIcon name="phone" size="sm" />
+              <MaterialIcon name="phone" size="xs" />
               <span className="font-bold text-gold">{CONTACT_INFO.phone}</span>
             </a>
             <a 
               href={`mailto:${CONTACT_INFO.email}`}
               className="flex items-center gap-1.5 hover:text-gold transition-colors"
             >
-              <MaterialIcon name="email" size="sm" />
+              <MaterialIcon name="email" size="xs" />
               <span className="font-semibold">{CONTACT_INFO.email}</span>
             </a>
           </div>
 
           {/* Right - Address */}
           <div className="flex items-center gap-1.5 text-white/80">
-            <MaterialIcon name="location_on" size="sm" />
+            <MaterialIcon name="location_on" size="xs" />
             <span className="font-semibold">{CONTACT_INFO.address}</span>
           </div>
         </div>

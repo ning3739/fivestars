@@ -10,7 +10,7 @@ export interface MaterialIconProps {
   /** The name of the Material Symbol icon (e.g., 'home', 'star', 'check_circle') */
   name: string;
   /** Icon size variant */
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   /** Additional CSS classes */
   className?: string;
   /** Whether to use filled variant */
@@ -22,6 +22,7 @@ export interface MaterialIconProps {
  * Maps size variants to Tailwind text size classes
  */
 const sizeClasses: Record<NonNullable<MaterialIconProps['size']>, string> = {
+  xs: 'text-base',  // 16px
   sm: 'text-lg',    // 18px
   md: 'text-2xl',   // 24px (default)
   lg: 'text-3xl',   // 30px
@@ -35,6 +36,7 @@ const sizeClasses: Record<NonNullable<MaterialIconProps['size']>, string> = {
  * - Consistent sizing across the application
  * - Support for filled/outlined variants
  * - Easy integration with Tailwind CSS
+ * - Prevents icon flash during font loading
  * 
  * @example
  * // Basic usage
@@ -60,11 +62,17 @@ export function MaterialIcon({
     <span
       className={cn(
         'material-symbols-outlined',
+        'inline-flex items-center justify-center',
         sizeClasses[size],
         filled && 'filled',
         className
       )}
       aria-hidden="true"
+      style={{
+        // Prevent layout shift during font loading
+        minWidth: '1em',
+        minHeight: '1em',
+      }}
     >
       {name}
     </span>
